@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>软件 | 罗技 · 重新设计</title>
-    <!-- 简洁现代化风格，参考罗技品牌调性 -->
+    <title>罗技 · 软件生态</title>
     <style>
+        /* ===== 全局重置 & 基础 ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -25,20 +29,23 @@
             padding: 2rem 2rem 4rem;
         }
 
-        /* 头部导航（示意） */
+        /* ===== 头部导航 ===== */
         .site-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(0,0,0,0.04);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
             margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            cursor: default;
         }
 
         .logo-icon {
@@ -59,22 +66,34 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.8rem;
             font-size: 0.95rem;
             font-weight: 450;
             color: #374151;
+            flex-wrap: wrap;
         }
 
-        .nav-links span {
-            cursor: default;
-            transition: color 0.1s;
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.15s;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
         }
 
-        .nav-links span:hover {
+        .nav-links a:hover {
             color: #00b8a3;
+            border-bottom-color: #00b8a3;
         }
 
-        /* 主标题区 */
+        .nav-links a.active {
+            color: #00b8a3;
+            border-bottom-color: #00b8a3;
+            font-weight: 500;
+        }
+
+        /* ===== 页面标题 ===== */
         .page-title {
             margin-bottom: 3.5rem;
         }
@@ -97,7 +116,32 @@
             max-width: 600px;
         }
 
-        /* 卡片通用设计 */
+        /* ===== 页面内容容器 ===== */
+        .page-content {
+            display: block;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== 软件卡片通用 ===== */
         .software-grid {
             display: flex;
             flex-direction: column;
@@ -110,7 +154,7 @@
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.03);
             padding: 2.8rem 3rem;
             transition: all 0.2s;
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(0, 0, 0, 0.02);
         }
 
         .software-card:hover {
@@ -140,14 +184,13 @@
             font-weight: 500;
             color: #2d3a4f;
             letter-spacing: 0.3px;
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(0, 0, 0, 0.02);
         }
 
         .card-tagline {
             font-size: 1.3rem;
             font-weight: 450;
             color: #1f2a3f;
-            margin-bottom: 2.2rem;
             border-left: 4px solid #00b8a3;
             padding-left: 1.2rem;
             background: #f8fafc;
@@ -210,7 +253,6 @@
             border: 1px solid #e9edf4;
         }
 
-        /* G HUB 单独微调 */
         .ghub .card-tagline {
             border-left-color: #6c5ce7;
         }
@@ -219,19 +261,165 @@
             color: #5f4ad9;
         }
 
-        /* 响应式 */
+        /* ===== 成功案例 ===== */
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-item {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem 2rem 2.2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.15s;
+        }
+
+        .case-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .case-item .emoji-big {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .case-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0b1e33;
+        }
+
+        .case-item .case-desc {
+            color: #4b5a6e;
+            font-size: 0.96rem;
+            line-height: 1.6;
+        }
+
+        .case-item .case-tag {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #eef2f6;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2d3a4f;
+        }
+
+        /* ===== 产品内容 ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .product-item {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            transition: transform 0.15s;
+        }
+
+        .product-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .product-item .prod-icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-item h4 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            color: #0b1e33;
+        }
+
+        .product-item p {
+            font-size: 0.88rem;
+            color: #5a6a7e;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== 联系我们 ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .contact-item .c-icon {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item h4 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            color: #0b1e33;
+        }
+
+        .contact-item p {
+            color: #4b5a6e;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        .contact-item .c-link {
+            display: inline-block;
+            margin-top: 0.6rem;
+            color: #00b8a3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item .c-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 页脚 ===== */
+        .site-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eef2f6;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7a8f;
+        }
+
+        /* ===== 响应式 ===== */
         @media (max-width: 750px) {
             .wrapper {
                 padding: 1.2rem 1.2rem 3rem;
             }
             .site-header {
                 flex-direction: column;
-                align-items: start;
-                gap: 1rem;
+                align-items: stretch;
+                gap: 0.8rem;
             }
             .nav-links {
-                gap: 1.2rem;
-                flex-wrap: wrap;
+                gap: 1rem 1.2rem;
+                justify-content: center;
             }
             .page-title h1 {
                 font-size: 2.2rem;
@@ -251,6 +439,15 @@
                 grid-template-columns: 1fr;
                 gap: 1.8rem;
             }
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -262,146 +459,317 @@
                 align-items: flex-start;
                 gap: 0.5rem;
             }
-        }
-
-        /* 辅助 */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0,0,0,0);
-            border: 0;
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                gap: 0.8rem;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
-        <!-- 头部，简化的罗技风格 -->
+
+        <!-- ===== 头部导航 ===== -->
         <header class="site-header">
             <div class="logo-area">
                 <span class="logo-icon">⏻</span>
                 <span class="logo-text">罗技 · 软件</span>
             </div>
-            <div class="nav-links">
-                <span>个人办公</span>
-                <span>游戏</span>
-                <span>支持</span>
-                <span>商店</span>
-            </div>
+            <nav class="nav-links" id="mainNav">
+                <a href="#" data-section="software" class="active">软件</a>
+                <a href="#" data-section="cases">成功案例</a>
+                <a href="#" data-section="products">产品</a>
+                <a href="#" data-section="contact">联系我们</a>
+            </nav>
         </header>
 
-        <!-- 主标题 -->
+        <!-- ===== 页面标题 ===== -->
         <div class="page-title">
             <h1>软件 · 成就非凡</h1>
             <div class="subhead">更轻松、更高效。为办公、创作与游戏打造的智能控制平台。</div>
         </div>
 
-        <!-- 软件卡片列表 -->
-        <div class="software-grid">
-            <!-- 1. Options+ 卡片 -->
-            <section class="software-card options-plus">
-                <div class="card-header">
-                    <h2>Logi Options+</h2>
-                    <span class="card-badge">新一代 · 办公创造</span>
-                </div>
-                <div class="card-tagline">
-                    ⚡ 成就非凡 · 自定义您的设备
-                </div>
+        <!-- ===== 页面内容 ===== -->
+        <div class="page-content">
 
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <span class="feature-icon">🖱️</span>
-                        <h3>自定义设备</h3>
-                        <p>配置鼠标按钮、键盘按键、触摸板，调节灯光与网络摄像头，保持出色状态。</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🌀</span>
-                        <h3>Flow 多设备控制</h3>
-                        <p>在电脑间顺畅传输文本、图像和文件。<span class="highlight">甚至 Windows 与 macOS 之间</span>。</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📁</span>
-                        <h3>应用专属配置</h3>
-                        <p>为 Chrome、Edge、Zoom、Office、Adobe 等常用应用预设或自定义操作。</p>
-                    </div>
-                </div>
+            <!-- ========================================================= -->
+            <!-- 1. 软件  -->
+            <!-- ========================================================= -->
+            <section class="page-section active" id="section-software">
+                <div class="software-grid">
 
-                <div class="divider-light"></div>
+                    <!-- Options+ -->
+                    <section class="software-card options-plus">
+                        <div class="card-header">
+                            <h2>Logi Options+</h2>
+                            <span class="card-badge">新一代 · 办公创造</span>
+                        </div>
+                        <div class="card-tagline">⚡ 成就非凡 · 自定义您的设备</div>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <span class="feature-icon">🖱️</span>
+                                <h3>自定义设备</h3>
+                                <p>配置鼠标按钮、键盘按键、触摸板，调节灯光与网络摄像头，保持出色状态。</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🌀</span>
+                                <h3>Flow 多设备控制</h3>
+                                <p>在电脑间顺畅传输文本、图像和文件。<span class="highlight">甚至 Windows 与 macOS 之间</span>。</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">📁</span>
+                                <h3>应用专属配置</h3>
+                                <p>为 Chrome、Edge、Zoom、Office、Adobe 等常用应用预设或自定义操作。</p>
+                            </div>
+                        </div>
+                        <div class="divider-light"></div>
+                        <div class="feature-grid" style="margin-top:0;">
+                            <div class="feature-item">
+                                <span class="feature-icon">✨</span>
+                                <h3>全新界面</h3>
+                                <p>升级后的 Logi Options+ 直观易用，让办公更智能。</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🔗</span>
+                                <h3>跨系统流畅</h3>
+                                <p>在 Windows 和 macOS 之间使用 Flow，无缝协作。</p>
+                            </div>
+                        </div>
+                        <div class="card-footer-note">⚙️ 支持鼠标 · 键盘 · 指示灯 · 网络摄像头 · 触控板</div>
+                    </section>
 
-                <div class="feature-grid" style="margin-top: 0;">
-                    <div class="feature-item">
-                        <span class="feature-icon">✨</span>
-                        <h3>全新界面</h3>
-                        <p>升级后的 Logi Options+ 直观易用，让办公更智能。</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🔗</span>
-                        <h3>跨系统流畅</h3>
-                        <p>在 Windows 和 macOS 之间使用 Flow，无缝协作。</p>
-                    </div>
-                </div>
+                    <!-- G HUB -->
+                    <section class="software-card ghub">
+                        <div class="card-header">
+                            <h2>罗技 G HUB</h2>
+                            <span class="card-badge">游戏 · 直播 · 装备</span>
+                        </div>
+                        <div class="card-tagline" style="border-left-color:#6c5ce7;">🎮 全面掌控 · 制胜配置</div>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <span class="feature-icon">🎯</span>
+                                <h3>配置 · 分享 · 共赢</h3>
+                                <p>下载职业选手与主播的配置文件，体验鼠标、按键绑定和宏。</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">📡</span>
+                                <h3>掌控直播</h3>
+                                <p>为按键编程，创建宏启动媒体、切换场景，<span class="highlight">支持 OBS Studio</span>。</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🌈</span>
+                                <h3>LIGHTSYNC 灯光</h3>
+                                <p>动画效果、社区灯光配置，为键盘、鼠标、耳机、音箱赋予色彩。</p>
+                            </div>
+                        </div>
+                        <div class="divider-light"></div>
+                        <div class="feature-grid" style="margin-top:0;">
+                            <div class="feature-item">
+                                <span class="feature-icon">⌨️</span>
+                                <h3>全装备支持</h3>
+                                <p>鼠标、键盘、耳机（含麦克风）、音箱、网络摄像头。</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">⚡</span>
+                                <h3>即时调整</h3>
+                                <p>游戏内实时调参，无需退出，保持专注。</p>
+                            </div>
+                        </div>
+                        <div class="card-footer-note" style="background:#f5f2ff;border-color:#d9d0f0;">🎧 为游戏与直播打造 · 社区驱动</div>
+                    </section>
 
-                <div class="card-footer-note">
-                    ⚙️ 支持鼠标 · 键盘 · 指示灯 · 网络摄像头 · 触控板
-                </div>
-            </section>
-
-            <!-- 2. G HUB 卡片 -->
-            <section class="software-card ghub">
-                <div class="card-header">
-                    <h2>罗技 G HUB</h2>
-                    <span class="card-badge">游戏 · 直播 · 装备</span>
-                </div>
-                <div class="card-tagline" style="border-left-color: #6c5ce7;">
-                    🎮 全面掌控 · 制胜配置
-                </div>
-
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <span class="feature-icon">🎯</span>
-                        <h3>配置 · 分享 · 共赢</h3>
-                        <p>下载职业选手与主播的配置文件，体验鼠标、按键绑定和宏。</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📡</span>
-                        <h3>掌控直播</h3>
-                        <p>为按键编程，创建宏启动媒体、切换场景，<span class="highlight">支持 OBS Studio</span>。</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🌈</span>
-                        <h3>LIGHTSYNC 灯光</h3>
-                        <p>动画效果、社区灯光配置，为键盘、鼠标、耳机、音箱赋予色彩。</p>
-                    </div>
-                </div>
-
-                <div class="divider-light"></div>
-
-                <div class="feature-grid" style="margin-top: 0;">
-                    <div class="feature-item">
-                        <span class="feature-icon">⌨️</span>
-                        <h3>全装备支持</h3>
-                        <p>鼠标、键盘、耳机（含麦克风）、音箱、网络摄像头。</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">⚡</span>
-                        <h3>即时调整</h3>
-                        <p>游戏内实时调参，无需退出，保持专注。</p>
-                    </div>
-                </div>
-
-                <div class="card-footer-note" style="background: #f5f2ff; border-color: #d9d0f0;">
-                    🎧 为游戏与直播打造 · 社区驱动
                 </div>
             </section>
 
-            <!-- 附加说明：保持与罗技官网一致的简洁感 -->
-            <div style="margin-top: 1rem; padding: 1.5rem 1rem 0; text-align: center; font-size: 0.9rem; color: #6b7a8f; border-top: 1px solid #eef2f6;">
-                <span>罗技软件套件 · 适用于个人、职业人士及游戏玩家</span>
-            </div>
-        </div>
-    </div>
+            <!-- ========================================================= -->
+            <!-- 2. 成功案例 -->
+            <!-- ========================================================= -->
+            <section class="page-section" id="section-cases">
+                <div style="margin-bottom:2rem;">
+                    <h2 style="font-size:2rem;font-weight:550;color:#0b1e33;letter-spacing:-0.02em;">✨ 成功案例</h2>
+                    <p style="color:#4b5a6e;font-size:1.05rem;">来自全球团队与创作者的真实故事</p>
+                </div>
+                <div class="case-grid">
+                    <div class="case-item">
+                        <span class="emoji-big">🏢</span>
+                        <h3>远程协作升级</h3>
+                        <p class="case-desc">某跨国设计团队使用 Logi Options+ 的 Flow 功能，在 Windows 和 Mac 之间无缝拖拽文件，协作效率提升 40%。</p>
+                        <span class="case-tag">办公 · 跨平台</span>
+                    </div>
+                    <div class="case-item">
+                        <span class="emoji-big">🎮</span>
+                        <h3>职业战队训练</h3>
+                        <p class="case-desc">顶级电竞战队使用 G HUB 定制宏与灯光同步，比赛响应速度提升，团队配合更加默契。</p>
+                        <span class="case-tag">游戏 · 竞技</span>
+                    </div>
+                    <div class="case-item">
+                        <span class="emoji-big">📹</span>
+                        <h3>直播达人首选</h3>
+                        <p class="case-desc">知名主播借助 G HUB 一键切换 OBS 场景、调节音频，直播流程更顺畅，观众互动更及时。</p>
+                        <span class="case-tag">直播 · 创作</span>
+                    </div>
+                    <div class="case-item">
+                        <span class="emoji-big">🧑‍💻</span>
+                        <h3>开发者效率工具</h3>
+                        <p class="case-desc">工程师将常用代码片段绑定到鼠标侧键，配合 Options+ 应用配置，编码效率显著提高。</p>
+                        <span class="case-tag">开发 · 效率</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 3. 产品 -->
+            <!-- ========================================================= -->
+            <section class="page-section" id="section-products">
+                <div style="margin-bottom:2rem;">
+                    <h2 style="font-size:2rem;font-weight:550;color:#0b1e33;letter-spacing:-0.02em;">🛒 产品内容</h2>
+                    <p style="color:#4b5a6e;font-size:1.05rem;">软件所支持的硬件生态，为不同场景量身打造</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <span class="prod-icon">🖱️</span>
+                        <h4>MX 系列鼠标</h4>
+                        <p>旗舰办公鼠标，支持 Flow 与多设备切换</p>
+                    </div>
+                    <div class="product-item">
+                        <span class="prod-icon">⌨️</span>
+                        <h4>MX 机械键盘</h4>
+                        <p>舒适敲击，智能背光，多设备连接</p>
+                    </div>
+                    <div class="product-item">
+                        <span class="prod-icon">🎧</span>
+                        <h4>G 系列耳机</h4>
+                        <p>7.1 环绕声，降噪麦克风，RGB 灯效</p>
+                    </div>
+                    <div class="product-item">
+                        <span class="prod-icon">📷</span>
+                        <h4>网络摄像头</h4>
+                        <p>4K 超清，自动对焦，内置降噪麦克风</p>
+                    </div>
+                    <div class="product-item">
+                        <span class="prod-icon">🎮</span>
+                        <h4>G 系列鼠标</h4>
+                        <p>高精度传感器，可调重量，RGB 同步</p>
+                    </div>
+                    <div class="product-item">
+                        <span class="prod-icon">🔊</span>
+                        <h4>音箱 & 麦克风</h4>
+                        <p>沉浸音质，专业拾音，LIGHTSYNC 联动</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 4. 联系我们 -->
+            <!-- ========================================================= -->
+            <section class="page-section" id="section-contact">
+                <div style="margin-bottom:2rem;">
+                    <h2 style="font-size:2rem;font-weight:550;color:#0b1e33;letter-spacing:-0.02em;">📬 联系我们</h2>
+                    <p style="color:#4b5a6e;font-size:1.05rem;">有任何问题或合作意向？欢迎与我们取得联系</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="c-icon">💬</span>
+                        <h4>在线客服</h4>
+                        <p>工作日 9:00 – 18:00</p>
+                        <a href="#" class="c-link">点击咨询 →</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="c-icon">📧</span>
+                        <h4>邮件支持</h4>
+                        <p>support@logitech-software.com</p>
+                        <a href="mailto:support@logitech-software.com" class="c-link">发送邮件 →</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="c-icon">📞</span>
+                        <h4>电话热线</h4>
+                        <p>400-800-8888</p>
+                        <span style="font-size:0.8rem;color:#8a9aa8;">服务时间 9:00–21:00</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="c-icon">🌐</span>
+                        <h4>官方社区</h4>
+                        <p>与全球用户交流经验</p>
+                        <a href="#" class="c-link">访问社区 →</a>
+                    </div>
+                </div>
+            </section>
+
+        </div><!-- /page-content -->
+
+        <!-- ===== 页脚 ===== -->
+        <footer class="site-footer">
+            <span>© 2026 罗技 · 软件生态 · 为办公、创作与游戏而生</span>
+        </footer>
+
+    </div><!-- /wrapper -->
+
+    <!-- ========================================================= -->
+    <!-- JavaScript: 菜单切换 -->
+    <!-- ========================================================= -->
+    <script>
+        (function() {
+            const navLinks = document.querySelectorAll('#mainNav a');
+            const sections = {
+                software: document.getElementById('section-software'),
+                cases: document.getElementById('section-cases'),
+                products: document.getElementById('section-products'),
+                contact: document.getElementById('section-contact')
+            };
+
+            function switchSection(sectionId) {
+                // 隐藏所有 section
+                Object.values(sections).forEach(sec => sec.classList.remove('active'));
+
+                // 显示目标 section
+                const target = sections[sectionId];
+                if (target) target.classList.add('active');
+
+                // 更新导航高亮
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.section === sectionId) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // 滚动到顶部（可选）
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // 点击导航切换
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.dataset.section;
+                    if (sectionId) switchSection(sectionId);
+                });
+            });
+
+            // 默认激活 software（确保状态一致）
+            // 如果当前 URL 有 hash，则按 hash 切换，否则保持 software
+            const hash = window.location.hash.replace('#', '');
+            if (hash && sections[hash]) {
+                switchSection(hash);
+            } else {
+                // 默认 software 已经是 active，但确保导航高亮正确
+                // 但如果用户刷新页面，active 类可能丢失，重新设置
+                const activeSection = document.querySelector('.page-section.active');
+                if (activeSection) {
+                    const id = activeSection.id.replace('section-', '');
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.dataset.section === id);
+                    });
+                } else {
+                    // 如果没有任何 active，默认激活 software
+                    switchSection('software');
+                }
+            }
+        })();
+    </script>
+
 </body>
 </html>
