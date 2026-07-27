@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件 | 罗技 · 重新设计</title>
+    <!-- 简洁现代化风格，参考罗技品牌调性 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: #1a1f2b;
+            line-height: 1.5;
+        }
+
+        .wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        /* 头部导航（示意） */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            margin-bottom: 2.5rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: #00b8a3;
+            color: white;
+            padding: 0.1rem 0.6rem;
+            border-radius: 40px;
+        }
+
+        .logo-text {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: #1f2937;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+            font-weight: 450;
+            color: #374151;
+        }
+
+        .nav-links span {
+            cursor: default;
+            transition: color 0.1s;
+        }
+
+        .nav-links span:hover {
+            color: #00b8a3;
+        }
+
+        /* 主标题区 */
+        .page-title {
+            margin-bottom: 3.5rem;
+        }
+
+        .page-title h1 {
+            font-size: 2.8rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0b1e33 0%, #1f3a5c 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .page-title .subhead {
+            font-size: 1.1rem;
+            color: #4b5563;
+            font-weight: 400;
+            max-width: 600px;
+        }
+
+        /* 卡片通用设计 */
+        .software-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+
+        .software-card {
+            background: white;
+            border-radius: 2.5rem;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.03);
+            padding: 2.8rem 3rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .software-card:hover {
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 1rem 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-header h2 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #0b1e33;
+        }
+
+        .card-badge {
+            background: #eef2f6;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2d3a4f;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .card-tagline {
+            font-size: 1.3rem;
+            font-weight: 450;
+            color: #1f2a3f;
+            margin-bottom: 2.2rem;
+            border-left: 4px solid #00b8a3;
+            padding-left: 1.2rem;
+            background: #f8fafc;
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            background: #f4f7fa;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem 1.8rem;
+            margin: 2rem 0 0.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0b1e33;
+        }
+
+        .feature-item p {
+            color: #3d4a5c;
+            font-size: 0.96rem;
+            line-height: 1.5;
+            max-width: 30ch;
+        }
+
+        .feature-item .highlight {
+            color: #00a090;
+            font-weight: 450;
+        }
+
+        .divider-light {
+            height: 1px;
+            background: linear-gradient(to right, #e0e7ef, transparent);
+            margin: 2.2rem 0 2.5rem;
+        }
+
+        .card-footer-note {
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+            color: #4a5a72;
+            background: #f4f7fc;
+            padding: 0.8rem 1.8rem;
+            border-radius: 80px;
+            display: inline-block;
+            border: 1px solid #e9edf4;
+        }
+
+        /* G HUB 单独微调 */
+        .ghub .card-tagline {
+            border-left-color: #6c5ce7;
+        }
+
+        .ghub .feature-item .highlight {
+            color: #5f4ad9;
+        }
+
+        /* 响应式 */
+        @media (max-width: 750px) {
+            .wrapper {
+                padding: 1.2rem 1.2rem 3rem;
+            }
+            .site-header {
+                flex-direction: column;
+                align-items: start;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+            .software-card {
+                padding: 1.8rem 1.5rem;
+                border-radius: 2rem;
+            }
+            .card-header h2 {
+                font-size: 1.8rem;
+            }
+            .card-tagline {
+                font-size: 1.1rem;
+                padding: 0.4rem 1.2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* 辅助 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 头部，简化的罗技风格 -->
+        <header class="site-header">
+            <div class="logo-area">
+                <span class="logo-icon">⏻</span>
+                <span class="logo-text">罗技 · 软件</span>
+            </div>
+            <div class="nav-links">
+                <span>个人办公</span>
+                <span>游戏</span>
+                <span>支持</span>
+                <span>商店</span>
+            </div>
+        </header>
+
+        <!-- 主标题 -->
+        <div class="page-title">
+            <h1>软件 · 成就非凡</h1>
+            <div class="subhead">更轻松、更高效。为办公、创作与游戏打造的智能控制平台。</div>
+        </div>
+
+        <!-- 软件卡片列表 -->
+        <div class="software-grid">
+            <!-- 1. Options+ 卡片 -->
+            <section class="software-card options-plus">
+                <div class="card-header">
+                    <h2>Logi Options+</h2>
+                    <span class="card-badge">新一代 · 办公创造</span>
+                </div>
+                <div class="card-tagline">
+                    ⚡ 成就非凡 · 自定义您的设备
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🖱️</span>
+                        <h3>自定义设备</h3>
+                        <p>配置鼠标按钮、键盘按键、触摸板，调节灯光与网络摄像头，保持出色状态。</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌀</span>
+                        <h3>Flow 多设备控制</h3>
+                        <p>在电脑间顺畅传输文本、图像和文件。<span class="highlight">甚至 Windows 与 macOS 之间</span>。</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📁</span>
+                        <h3>应用专属配置</h3>
+                        <p>为 Chrome、Edge、Zoom、Office、Adobe 等常用应用预设或自定义操作。</p>
+                    </div>
+                </div>
+
+                <div class="divider-light"></div>
+
+                <div class="feature-grid" style="margin-top: 0;">
+                    <div class="feature-item">
+                        <span class="feature-icon">✨</span>
+                        <h3>全新界面</h3>
+                        <p>升级后的 Logi Options+ 直观易用，让办公更智能。</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔗</span>
+                        <h3>跨系统流畅</h3>
+                        <p>在 Windows 和 macOS 之间使用 Flow，无缝协作。</p>
+                    </div>
+                </div>
+
+                <div class="card-footer-note">
+                    ⚙️ 支持鼠标 · 键盘 · 指示灯 · 网络摄像头 · 触控板
+                </div>
+            </section>
+
+            <!-- 2. G HUB 卡片 -->
+            <section class="software-card ghub">
+                <div class="card-header">
+                    <h2>罗技 G HUB</h2>
+                    <span class="card-badge">游戏 · 直播 · 装备</span>
+                </div>
+                <div class="card-tagline" style="border-left-color: #6c5ce7;">
+                    🎮 全面掌控 · 制胜配置
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <h3>配置 · 分享 · 共赢</h3>
+                        <p>下载职业选手与主播的配置文件，体验鼠标、按键绑定和宏。</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📡</span>
+                        <h3>掌控直播</h3>
+                        <p>为按键编程，创建宏启动媒体、切换场景，<span class="highlight">支持 OBS Studio</span>。</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌈</span>
+                        <h3>LIGHTSYNC 灯光</h3>
+                        <p>动画效果、社区灯光配置，为键盘、鼠标、耳机、音箱赋予色彩。</p>
+                    </div>
+                </div>
+
+                <div class="divider-light"></div>
+
+                <div class="feature-grid" style="margin-top: 0;">
+                    <div class="feature-item">
+                        <span class="feature-icon">⌨️</span>
+                        <h3>全装备支持</h3>
+                        <p>鼠标、键盘、耳机（含麦克风）、音箱、网络摄像头。</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <h3>即时调整</h3>
+                        <p>游戏内实时调参，无需退出，保持专注。</p>
+                    </div>
+                </div>
+
+                <div class="card-footer-note" style="background: #f5f2ff; border-color: #d9d0f0;">
+                    🎧 为游戏与直播打造 · 社区驱动
+                </div>
+            </section>
+
+            <!-- 附加说明：保持与罗技官网一致的简洁感 -->
+            <div style="margin-top: 1rem; padding: 1.5rem 1rem 0; text-align: center; font-size: 0.9rem; color: #6b7a8f; border-top: 1px solid #eef2f6;">
+                <span>罗技软件套件 · 适用于个人、职业人士及游戏玩家</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
