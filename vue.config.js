@@ -14,7 +14,8 @@ module.exports = {
   // 根据环境动态设置 publicPath
   // 生产环境（部署到 GitHub Pages）使用 /website/
   // 开发环境使用根路径 /
-  publicPath: process.env.NODE_ENV === 'production' ? `/${REPO_NAME}/` : '/',
+  publicPath: '/website/',
+  // publicPath: process.env.NODE_ENV === 'production' ? `/${REPO_NAME}/` : '/',
   outputDir: 'dist',
   assetsDir: 'assets',
   filenameHashing: true,
