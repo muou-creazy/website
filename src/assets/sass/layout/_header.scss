@@ -1,0 +1,32 @@
+$bg:#fafafa;
+
+.el-header {
+	padding: 0 !important;
+}
+
+.headerBox {
+	background-color: $bg;
+	overflow: hidden;
+	justify-content: space-between;
+
+	// border-bottom:1px solid #f00;
+	.logo {
+		width: 200px;
+		background-color: $bg;
+		color: #eee;
+		line-height: 60px;
+		font-size: 26px;
+	}
+
+	i {
+		background-color: transparent !important;
+	}
+
+	.el-submenu>div {
+		border: none !important;
+	}
+}
+
+.el-menu .el-submenu .el-menu-item {
+	min-width: 30px !important;
+}

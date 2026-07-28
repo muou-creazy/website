@@ -1,0 +1,31 @@
+.aboutBox {
+    padding: 0 12px;
+    text-align: left;
+
+    h4 {
+        background: #fcfcfc;
+        text-indent: 2em;
+        line-height: 42px;
+        margin-top: 0;
+    }
+
+    .cont {
+        line-height: 36px;
+        font-size: 14px;
+        text-indent: 2em;
+        margin-bottom: 30px;
+    }
+
+    .imgCode {
+        text-indent: 0;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 30px;
+
+        &>div {
+            width: 120px;
+            text-align: center;
+            margin: 0 12px;
+        }
+    }
+}

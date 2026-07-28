@@ -1,0 +1,101 @@
+.indexBox > div {
+  margin-bottom: 30px;
+}
+
+.indexBox .picCards {
+  width: 100%;
+  overflow: hidden;
+}
+
+.indexBox .picCards .cardItem {
+  width: 30%;
+  position: relative;
+}
+
+.indexBox .picCards .cardItem .el-card__body {
+  padding: 0;
+}
+
+.indexBox .picCards .cardItem .image {
+  width: 100%;
+  height: 100%;
+}
+
+.indexBox .picCards .cardItem .cardInfo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s;
+}
+
+.indexBox .picCards .cardItem .cardInfo:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.indexBox .picCards .cardItem .cardInfo div {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+}
+
+.indexBox .picCards .cardItem .cardInfo span {
+  display: block;
+  color: #fff;
+  height: 24px;
+  line-height: 24px;
+  text-align: left;
+  padding: 0 20px 5px;
+}
+
+.indexBox .picCards .cardItem .cardInfo .title {
+  font-size: 14px;
+}
+
+.indexBox .picCards .cardItem .cardInfo .desc {
+  font-size: 12px;
+}
+
+.indexBox .picCards .cardItem {
+  float: left;
+  border-radius: 10px;
+}
+
+.indexBox .picCards .cardItem:nth-child(1) {
+  width: 49%;
+  height: 300px;
+}
+
+.indexBox .picCards .cardItem:nth-child(2) {
+  width: 49%;
+  margin-left: 2%;
+  height: 145px;
+}
+
+.indexBox .picCards .cardItem:nth-child(3) {
+  width: 49%;
+  margin-left: 2%;
+  height: 145px;
+  margin-top: 10px;
+}
+
+.indexBox .articalCards .cardItem .el-card__body {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.indexBox .articalCards .image {
+  width: 86px;
+}
+
+.indexBox .articalCards .cardInfo {
+  flex-grow: 1;
+  width: 0;
+}
+
+.indexBox .articalCards .cardInfo span {
+  text-align: left;
+}
