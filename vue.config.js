@@ -7,8 +7,14 @@
  */
 const resolve = (dir) => require('path').join(__dirname, dir)
 
+// 你的 GitHub 仓库名
+const REPO_NAME = 'website'
+
 module.exports = {
-  publicPath: './',
+  // 根据环境动态设置 publicPath
+  // 生产环境（部署到 GitHub Pages）使用 /website/
+  // 开发环境使用根路径 /
+  publicPath: process.env.NODE_ENV === 'production' ? `/${REPO_NAME}/` : '/',
   outputDir: 'dist',
   assetsDir: 'assets',
   filenameHashing: true,
