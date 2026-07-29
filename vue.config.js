@@ -7,14 +7,13 @@
  */
 const resolve = (dir) => require('path').join(__dirname, dir)
 
-// 你的 GitHub 仓库名
+// 仓库名（仅在「无自定义域名、走 username.github.io/仓库名」时需要）
 const REPO_NAME = 'website'
 
 module.exports = {
-  // 根据环境动态设置 publicPath
-  // 生产环境（部署到 GitHub Pages）使用 /website/
-  // 开发环境使用根路径 /
-  publicPath: '/website/',
+  // 有 CNAME 自定义域名（如 www.qindidi.site）时站点根路径是 /，必须用 '/'
+  // 若去掉 CNAME、改用 https://用户名.github.io/website/，再改成 `/${REPO_NAME}/`
+  publicPath: '/',
   // publicPath: process.env.NODE_ENV === 'production' ? `/${REPO_NAME}/` : '/',
   outputDir: 'dist',
   assetsDir: 'assets',
