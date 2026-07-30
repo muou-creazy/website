@@ -1,775 +1,591 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>罗技 · 软件生态</title>
-    <style>
-        /* ===== 全局重置 & 基础 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SolanActive · Sports Supply Chain Integrator</title>
+  <meta name="description" content="SolanActive - professional sports protective gear, activewear, outdoor cycling, Amazon FBA supply, OEM/ODM, DDP one-stop service.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f9fc;
+      color: #1a1a1a;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #eef1f5; }
+    ::-webkit-scrollbar-thumb { background: #c4452b; border-radius: 12px; }
 
-        body {
-            background-color: #f9fafb;
-            color: #1a1f2b;
-            line-height: 1.5;
-        }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        .wrapper {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 2rem 4rem;
-        }
+    /* ===== 导航 ===== */
+    .navbar {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(238, 241, 245, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
-        /* ===== 头部导航 ===== */
-        .site-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+    /* ===== Logo 区块 - 浅色风格 ===== */
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-image {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(11, 43, 61, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      color: #0b2b3d;
+      flex-shrink: 0;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1.5px solid rgba(11, 43, 61, 0.08);
+      /* 使用轻量渐变 + 品牌首字母，浅色风格 */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="14" fill="%23f0f3f7" stroke="%23dce1e8" stroke-width="1.5"/><text x="50" y="68" font-family="Inter, sans-serif" font-size="46" font-weight="700" text-anchor="middle" fill="%230b2b3d" opacity="0.75">S</text><circle cx="78" cy="22" r="10" fill="%23c4452b" opacity="0.15"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .logo-image:hover {
+      transform: rotate(-4deg) scale(1.04);
+      background: rgba(11, 43, 61, 0.10);
+      border-color: rgba(196, 69, 43, 0.25);
+      box-shadow: 0 4px 16px rgba(196,69,43,0.08);
+    }
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0b2b3d;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .logo-text span {
+      color: #c4452b;
+    }
+    /* 移动端缩小 */
+    @media (max-width: 500px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-image { width: 36px; height: 36px; font-size: 16px; border-radius: 10px; }
+    }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: default;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #1e1e1e;
+      transition: 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #c4452b;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #c4452b; }
 
-        .logo-icon {
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            background: #00b8a3;
-            color: white;
-            padding: 0.1rem 0.6rem;
-            border-radius: 40px;
-        }
+    section[id] { scroll-margin-top: 80px; }
 
-        .logo-text {
-            font-weight: 500;
-            font-size: 1.2rem;
-            color: #1f2937;
-        }
+    /* ===== 内容块 ===== */
+    .section-block {
+      background: white;
+      border-radius: 32px;
+      padding: 48px 40px;
+      margin-bottom: 48px;
+      border: 1px solid #eef1f5;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .section-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            font-size: 0.95rem;
-            font-weight: 450;
-            color: #374151;
-            flex-wrap: wrap;
-        }
+    .badge {
+      background: #eae7e2;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #2d3e4b;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.4px;
+      transition: background 0.3s;
+    }
+    .badge:hover { background: #d6cfc6; }
 
-        .nav-links a {
-            color: #374151;
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.15s;
-            padding: 0.3rem 0;
-            border-bottom: 2px solid transparent;
-        }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .section-sub {
+      color: #4a4a4a;
+      max-width: 760px;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
 
-        .nav-links a:hover {
-            color: #00b8a3;
-            border-bottom-color: #00b8a3;
-        }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
-        .nav-links a.active {
-            color: #00b8a3;
-            border-bottom-color: #00b8a3;
-            font-weight: 500;
-        }
+    .card {
+      background: #f6f8fa;
+      border-radius: 20px;
+      padding: 22px 20px;
+      border: 1px solid #e4e9ef;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      height: 100%;
+      will-change: transform;
+    }
+    .card:hover {
+      border-color: #bcc9d6;
+      background: #f4f7fb;
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+    }
+    .card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; }
+    .card p { color: #3f4d5a; font-size: 0.95rem; }
 
-        /* ===== 页面标题 ===== */
-        .page-title {
-            margin-bottom: 3.5rem;
-        }
+    .img-placeholder {
+      background: #e6e9ed;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1f3a4b;
+      font-weight: 500;
+      font-size: 0.9rem;
+      min-height: 130px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #d9dde3;
+      text-align: center;
+      padding: 12px;
+      transition: all 0.35s ease;
+      will-change: transform;
+    }
+    .img-placeholder:hover {
+      transform: scale(1.02);
+      border-color: #b0becd;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+    .img-placeholder.large { min-height: 220px; }
+    .img-bg-1 { background-image: linear-gradient(145deg, #c5d4e3, #dce6f0); }
+    .img-bg-2 { background-image: linear-gradient(145deg, #bcccdc, #d3e0ec); }
+    .img-bg-3 { background-image: linear-gradient(145deg, #c8d7e7, #dbe7f3); }
+    .img-bg-4 { background-image: linear-gradient(145deg, #bfd0e0, #d5e2ef); }
+    .img-bg-5 { background-image: linear-gradient(145deg, #d0dde9, #e3ecf5); }
+    .img-bg-6 { background-image: linear-gradient(145deg, #c2d2e2, #d6e4f0); }
 
-        .page-title h1 {
-            font-size: 2.8rem;
-            font-weight: 550;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #0b1e33 0%, #1f3a5c 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.3rem;
-        }
+    .btn-primary {
+      background: #0b2b3d;
+      color: white;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: all 0.5s ease;
+      transform: translate(-50%, -50%);
+    }
+    .btn-primary:hover::after { width: 300px; height: 300px; }
+    .btn-primary:hover { background: #1e4057; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(11,43,61,0.2); }
 
-        .page-title .subhead {
-            font-size: 1.1rem;
-            color: #4b5563;
-            font-weight: 400;
-            max-width: 600px;
-        }
+    .about-highlight { margin-top: 2rem; }
 
-        /* ===== 页面内容容器 ===== */
-        .page-content {
-            display: block;
-        }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .service-card {
+      background: #f6f8fa;
+      border-radius: 20px;
+      padding: 22px 24px;
+      border: 1px solid #e4e9ef;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+    .service-card:hover {
+      border-color: #bcc9d6;
+      background: #f4f7fb;
+      transform: translateY(-3px) scale(1.005);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+    }
+    .service-card h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .service-card p { color: #3f4d5a; font-size: 0.95rem; margin: 0; }
+    .service-icon { font-size: 1.4rem; line-height: 1; }
 
-        .page-section {
-            display: none;
-            animation: fadeUp 0.4s ease;
-        }
+    .service-image-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .service-image-row .img-placeholder { min-height: 110px; }
 
-        .page-section.active {
-            display: block;
-        }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 6px; }
+    .faq-item {
+      background: #f6f8fa;
+      border-radius: 16px;
+      padding: 14px 20px;
+      border-left: 4px solid #c4452b;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+    .faq-item:hover {
+      background: #f0f3f7;
+      transform: translateX(4px);
+      border-left-width: 6px;
+    }
+    .faq-q { font-weight: 600; font-size: 0.98rem; color: #0b2b3d; }
+    .faq-a { color: #3d4f5e; font-size: 0.94rem; padding-left: 6px; }
 
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .faq-side { display: flex; flex-direction: column; gap: 18px; }
+    .faq-side .img-placeholder { min-height: 140px; border-radius: 24px; }
 
-        /* ===== 软件卡片通用 ===== */
-        .software-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 3.5rem;
-        }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px 18px;
+      border: 1px solid #d9dfe6;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      background: white;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #c4452b;
+      box-shadow: 0 0 0 4px rgba(196,69,43,0.08);
+      transform: scale(1.005);
+    }
+    .form-group textarea { border-radius: 20px; resize: vertical; }
 
-        .software-card {
-            background: white;
-            border-radius: 2.5rem;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.03);
-            padding: 2.8rem 3rem;
-            transition: all 0.2s;
-            border: 1px solid rgba(0, 0, 0, 0.02);
-        }
+    footer {
+      margin-top: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid #e0e5eb;
+      text-align: center;
+      color: #4f5f6d;
+      font-size: 0.9rem;
+    }
 
-        .software-card:hover {
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 1rem 1.8rem;
-            margin-bottom: 2rem;
-        }
-
-        .card-header h2 {
-            font-size: 2.2rem;
-            font-weight: 550;
-            letter-spacing: -0.02em;
-            color: #0b1e33;
-        }
-
-        .card-badge {
-            background: #eef2f6;
-            padding: 0.25rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #2d3a4f;
-            letter-spacing: 0.3px;
-            border: 1px solid rgba(0, 0, 0, 0.02);
-        }
-
-        .card-tagline {
-            font-size: 1.3rem;
-            font-weight: 450;
-            color: #1f2a3f;
-            border-left: 4px solid #00b8a3;
-            padding-left: 1.2rem;
-            background: #f8fafc;
-            padding: 0.8rem 1.5rem;
-            border-radius: 60px;
-            display: inline-block;
-            background: #f4f7fa;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem 1.8rem;
-            margin: 2rem 0 0.5rem;
-        }
-
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .feature-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .feature-item h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #0b1e33;
-        }
-
-        .feature-item p {
-            color: #3d4a5c;
-            font-size: 0.96rem;
-            line-height: 1.5;
-            max-width: 30ch;
-        }
-
-        .feature-item .highlight {
-            color: #00a090;
-            font-weight: 450;
-        }
-
-        .divider-light {
-            height: 1px;
-            background: linear-gradient(to right, #e0e7ef, transparent);
-            margin: 2.2rem 0 2.5rem;
-        }
-
-        .card-footer-note {
-            margin-top: 1.2rem;
-            font-size: 0.95rem;
-            color: #4a5a72;
-            background: #f4f7fc;
-            padding: 0.8rem 1.8rem;
-            border-radius: 80px;
-            display: inline-block;
-            border: 1px solid #e9edf4;
-        }
-
-        .ghub .card-tagline {
-            border-left-color: #6c5ce7;
-        }
-
-        .ghub .feature-item .highlight {
-            color: #5f4ad9;
-        }
-
-        /* ===== 成功案例 ===== */
-        .case-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .case-item {
-            background: white;
-            border-radius: 2rem;
-            padding: 2rem 2rem 2.2rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            transition: transform 0.15s;
-        }
-
-        .case-item:hover {
-            transform: translateY(-4px);
-        }
-
-        .case-item .emoji-big {
-            font-size: 2.8rem;
-            display: block;
-            margin-bottom: 0.8rem;
-        }
-
-        .case-item h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #0b1e33;
-        }
-
-        .case-item .case-desc {
-            color: #4b5a6e;
-            font-size: 0.96rem;
-            line-height: 1.6;
-        }
-
-        .case-item .case-tag {
-            display: inline-block;
-            margin-top: 1rem;
-            background: #eef2f6;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: #2d3a4f;
-        }
-
-        /* ===== 产品内容 ===== */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.8rem;
-        }
-
-        .product-item {
-            background: white;
-            border-radius: 1.8rem;
-            padding: 1.8rem 1.5rem;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.02);
-            transition: transform 0.15s;
-        }
-
-        .product-item:hover {
-            transform: translateY(-3px);
-        }
-
-        .product-item .prod-icon {
-            font-size: 2.8rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-item h4 {
-            font-size: 1.1rem;
-            font-weight: 550;
-            color: #0b1e33;
-        }
-
-        .product-item p {
-            font-size: 0.88rem;
-            color: #5a6a7e;
-            margin-top: 0.3rem;
-        }
-
-        /* ===== 联系我们 ===== */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .contact-item {
-            background: white;
-            border-radius: 1.8rem;
-            padding: 2rem 1.8rem;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.02);
-        }
-
-        .contact-item .c-icon {
-            font-size: 2.4rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item h4 {
-            font-size: 1.1rem;
-            font-weight: 550;
-            color: #0b1e33;
-        }
-
-        .contact-item p {
-            color: #4b5a6e;
-            font-size: 0.95rem;
-            margin-top: 0.3rem;
-        }
-
-        .contact-item .c-link {
-            display: inline-block;
-            margin-top: 0.6rem;
-            color: #00b8a3;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contact-item .c-link:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== 页脚 ===== */
-        .site-footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #eef2f6;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #6b7a8f;
-        }
-
-        /* ===== 响应式 ===== */
-        @media (max-width: 750px) {
-            .wrapper {
-                padding: 1.2rem 1.2rem 3rem;
-            }
-            .site-header {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.8rem;
-            }
-            .nav-links {
-                gap: 1rem 1.2rem;
-                justify-content: center;
-            }
-            .page-title h1 {
-                font-size: 2.2rem;
-            }
-            .software-card {
-                padding: 1.8rem 1.5rem;
-                border-radius: 2rem;
-            }
-            .card-header h2 {
-                font-size: 1.8rem;
-            }
-            .card-tagline {
-                font-size: 1.1rem;
-                padding: 0.4rem 1.2rem;
-            }
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 1.8rem;
-            }
-            .case-grid {
-                grid-template-columns: 1fr;
-            }
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-title h1 {
-                font-size: 1.8rem;
-            }
-            .card-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-links {
-                gap: 0.8rem;
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+    @media (max-width: 880px) {
+      .grid-2, .grid-3, .grid-4, .services-grid, .faq-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { gap: 1rem; flex-wrap: wrap; }
+      .section-block { padding: 32px 20px; }
+      .section-title { font-size: 1.8rem; }
+      .faq-side .img-placeholder { min-height: 120px; }
+      .service-image-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .service-image-row { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.5rem; }
+      .navbar .container { flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
+      .nav-links { gap: 0.8rem; font-size: 0.85rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="wrapper">
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#about" class="logo-wrapper" style="text-decoration:none;">
+      <!-- Logo 浅色风格 1:1 尺寸 44x44 (桌面) / 36x36 (移动端) -->
+      <div class="logo-image" role="img" aria-label="SolanActive Logo"></div>
+      <span class="logo-text">Solan<span>Active</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#services">Services</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-        <!-- ===== 头部导航 ===== -->
-        <header class="site-header">
-            <div class="logo-area">
-                <span class="logo-icon">⏻</span>
-                <span class="logo-text">罗技 · 软件</span>
-            </div>
-            <nav class="nav-links" id="mainNav">
-                <a href="#" data-section="software" class="active">软件</a>
-                <a href="#" data-section="cases">成功案例</a>
-                <a href="#" data-section="products">产品</a>
-                <a href="#" data-section="contact">联系我们</a>
-            </nav>
-        </header>
+<main class="container">
 
-        <!-- ===== 页面标题 ===== -->
-        <div class="page-title">
-            <h1>软件 · 成就非凡</h1>
-            <div class="subhead">更轻松、更高效。为办公、创作与游戏打造的智能控制平台。</div>
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section-block">
+    <span class="badge">⚡ 12+ years foreign trade</span>
+    <h2 class="section-title">About Us | Hebei Solan Technology Co., Ltd</h2>
+    <div class="grid-2" style="align-items: center;">
+      <div>
+        <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.4rem;">Who We Are</p>
+        <p>Hebei Solan Technology Co., Ltd. is a professional sports goods supply chain integrator and export enterprise based in Shijiazhuang, China. With 12 years of mature import and export experience, we adopt a <strong>self-operated factory + certified cooperative factory</strong> dual supply model, focusing on sports protective gear, fitness accessories, outdoor cycling equipment and functional active apparel. We serve global wholesalers, brand sellers and Amazon cross-border merchants with stable and diversified supply capacity.</p>
+        <p style="margin-top: 1rem;">Different from traditional single suppliers, Solanactive relies on self-owned production workshops for core hot-selling products to guarantee quality and delivery stability. Meanwhile, we cooperate with dozens of certified standardized factories in the sports and outdoor industry for supplementary product sourcing. Through strict factory screening, unified quality standard docking and centralized production supervision, we solve the pain points of scattered suppliers, inconsistent quality and high communication costs for overseas buyers.</p>
+        <p style="margin-top: 1rem;">Relying on strong supply chain integration capabilities, we not only provide core sports and outdoor products, but also support one-stop mixed procurement and consolidated shipment of multi-category goods. We are deeply experienced in Amazon bulk supply, OEM/ODM customization and DDP door-to-door delivery, providing full-link professional foreign trade solutions for global customers.</p>
+      </div>
+      <div>
+        <div class="img-placeholder large img-bg-1" style="min-height: 240px;">🌍 Supply Chain Integration · Sports & Outdoor Scene</div>
+      </div>
+    </div>
+
+    <div class="about-highlight">
+      <h3 style="font-weight: 600; margin-bottom: 0.8rem;">Our Core Advantages</h3>
+      <div class="grid-3">
+        <div class="card"><h4>📦 12-year professional export</h4><p>Familiar with global customs, tariff rules and cross-border sales standards, zero major foreign trade disputes over the years.</p></div>
+        <div class="card"><h4>🛒 Amazon mature supply</h4><p>Long-term service for Amazon FBA sellers, proficient in platform inspection, label specifications and batch stable delivery.</p></div>
+        <div class="card"><h4>🔍 Strict supply chain QC</h4><p>Unified production standards, pre-shipment sampling inspection, third-party inspection support.</p></div>
+        <div class="card"><h4>📦 One-stop integrated service</h4><p>Integrate multiple categories, support mixed container loading, save supplier docking and logistics costs.</p></div>
+        <div class="card"><h4>🚚 DDP & OEM professional support</h4><p>Provide door-to-door tax-included delivery and private label customized services for differentiated brand needs.</p></div>
+        <div class="card"><h4>🌍 Global mission</h4><p>To provide global customers with efficient, stable and cost-effective sports outdoor supply chain solutions.</p></div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top: 1.5rem;">
+      <div class="img-placeholder img-bg-2" style="min-height: 110px;">🔗 Supply Chain Flow</div>
+      <div class="img-placeholder img-bg-3" style="min-height: 110px;">🔎 Quality Inspection Process</div>
+      <div class="img-placeholder img-bg-4" style="min-height: 110px;">📦 Amazon FBA Packing & Labeling</div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section id="products" class="section-block">
+    <span class="badge">🔥 Product Center</span>
+    <h2 class="section-title">Our Products | Solanactive Sports & Outdoor Wholesale</h2>
+    <p class="section-sub">Solanactive focuses on global wholesale and customized supply of sports & outdoor series products. All items are sourced from certified cooperative factories with stable quality, complete specifications and strong batch supply capacity, fully adapting to offline wholesale, brand retail and Amazon cross-border sales standards.</p>
+    <div class="grid-3">
+      <div class="card"><div class="img-placeholder img-bg-2" style="min-height: 130px;">🦵 Sports Protective Gear</div><h4>Sports Protective Gear</h4><p>Knee braces, elbow pads, wrist supports, ankle protectors, lumbar belts. Custom thickness, non-slip, breathable fabric, private label.</p></div>
+      <div class="card"><div class="img-placeholder img-bg-3" style="min-height: 130px;">🏋️ Fitness Accessories</div><h4>Fitness & Sports Accessories</h4><p>Resistance bands, yoga accessories, sweatbands, training protective accessories, portable fitness gadgets.</p></div>
+      <div class="card"><div class="img-placeholder img-bg-4" style="min-height: 130px;">🚴 Outdoor Cycling</div><h4>Outdoor & Cycling Series</h4><p>Cycling protective gear, gloves, arm sleeves, outdoor breathable equipment, cycling accessories.</p></div>
+      <div class="card"><div class="img-placeholder img-bg-5" style="min-height: 130px;">👕 Functional Apparel</div><h4>Functional Active Apparel & Reflective Safety Wear</h4><p>Quick-dry T-shirts, fitness suits, hiking jackets, cycling jerseys, reflective safety vests, high-visibility workwear. Support OEM pattern, color, private label.</p></div>
+      <div class="card"><div class="img-placeholder img-bg-6" style="min-height: 130px;">📦 Mixed Procurement</div><h4>One-Stop Mixed Procurement</h4><p>Support mixed loading of all self-operated sports categories and other compliant daily goods, one-stop container procurement.</p></div>
+    </div>
+    <div style="margin-top: 1.5rem; background: #eef2f6; padding: 0.6rem 1.8rem; border-radius: 60px; display: inline-block; font-weight: 500; transition: all 0.3s ease;">✅ OEM/ODM · Amazon FBA · Mixed Consolidation</div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="section-block">
+    <span class="badge">⚙️ Services</span>
+    <h2 class="section-title">Our Services | One-Stop Sports Supply Chain Solution</h2>
+    <p class="section-sub">As a professional sports goods export supply chain integrator, Solanactive relies on 12 years of foreign trade experience to provide global buyers with full-standard, low-risk and high-efficiency one-stop procurement services.</p>
+
+    <div class="services-grid">
+      <div>
+        <div class="service-card"><h4><span class="service-icon">🏭</span> Strict Factory Selection & Unified QC</h4><p>Qualified cooperative factories with export qualifications. Unified standards, fabric inspection, semi-finished supervision, finished sampling. Meet EU, US, Amazon standards.</p></div>
+        <div class="service-card" style="margin-top: 16px;"><h4><span class="service-icon">🎨</span> OEM / ODM Customization</h4><p>Custom fabric, size, color, LOGO, silicone anti-slip, sublimation pattern, private label. Free proofing, fast sample, flexible MOQ.</p></div>
+        <div class="service-card" style="margin-top: 16px;"><h4><span class="service-icon">📦</span> Amazon FBA Specialized Supply</h4><p>Years of experience serving Amazon sellers. Standard FBA packaging, label pasting, batch stocking to reduce platform risks.</p></div>
+      </div>
+      <div>
+        <div class="service-card"><h4><span class="service-icon">🚚</span> DDP Door-to-Door Delivery</h4><p>Support DDP tax-included delivery for most European and American countries. Handle picking, customs, tariff, destination delivery.</p></div>
+        <div class="service-card" style="margin-top: 16px;"><h4><span class="service-icon">📦</span> One-Stop Mixed Consolidation</h4><p>Mix protective gear, fitness, cycling, apparel, reflective wear in one container. One-time docking, one-time shipment, great cost saving.</p></div>
+        <div class="service-card" style="margin-top: 16px;"><h4><span class="service-icon">🌍</span> Professional Foreign Trade After-Sales</h4><p>12 years export team, 24-hour inquiry reply, order tracking, documentation, after-sales support.</p></div>
+      </div>
+    </div>
+
+    <div class="service-image-row">
+      <div class="img-placeholder img-bg-1">🔬 QC & Quality Control</div>
+      <div class="img-placeholder img-bg-2">🖨️ OEM Printing / Sublimation</div>
+      <div class="img-placeholder img-bg-3">📦 Amazon FBA Packing & Labeling</div>
+      <div class="img-placeholder img-bg-4">🚢 DDP Container Consolidation</div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="section-block">
+    <span class="badge">❓ FAQ</span>
+    <h2 class="section-title">FAQ | Wholesale & Custom Inquiry Answers</h2>
+    <p class="section-sub">Here are the most frequently asked questions from our global wholesale and cross-border customers. Please feel free to contact us if you have other questions.</p>
+
+    <div class="faq-grid">
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">Q1: Are you a factory or a trading company?</div><div class="faq-a">A: Dual supply mode: self-owned factory for core products + cooperative factories for supporting categories. Uniform quality control for stable multi-category procurement.</div></div>
+        <div class="faq-item"><div class="faq-q">Q2: Can you support Amazon FBA supply and standard packaging?</div><div class="faq-a">A: Yes. Proficient in platform safety standards, FBA labeling, neutral packaging and batch stable delivery.</div></div>
+        <div class="faq-item"><div class="faq-q">Q3: Do you provide DDP door-to-door delivery service?</div><div class="faq-a">A: Yes, support DDP tax-included delivery for mainstream European and American countries.</div></div>
+        <div class="faq-item"><div class="faq-q">Q4: Can I mix different sports products in one container?</div><div class="faq-a">A: Absolutely. Mixed consolidation is our core advantage, saving procurement and logistics costs.</div></div>
+        <div class="faq-item"><div class="faq-q">Q5: Do you support OEM private label customization?</div><div class="faq-a">A: Yes. All core products support custom LOGO, pattern, fabric, size. Free design drafts and fast sample service.</div></div>
+        <div class="faq-item"><div class="faq-q">Q6: What is your MOQ?</div><div class="faq-a">A: Flexible MOQ for conventional sports protective gear and clothing. Small batch trial orders supported.</div></div>
+        <div class="faq-item"><div class="faq-q">Q7: How do you guarantee product quality?</div><div class="faq-a">A: Unified factory access standards, whole-process supervision, random sampling before shipment. Support third-party inspection.</div></div>
+        <div class="faq-item"><div class="faq-q">Q8: What are your payment and delivery terms?</div><div class="faq-a">A: T/T, Alibaba Trade Assurance, FOB port shipment, DDP door-to-door, stable delivery cycle.</div></div>
+      </div>
+      <div class="faq-side">
+        <div class="img-placeholder img-bg-1" style="min-height: 160px;">👥 Sales Team · Business Communication</div>
+        <div class="img-placeholder img-bg-2" style="min-height: 130px;">🧪 Product Sample Display</div>
+        <div class="img-placeholder img-bg-3" style="min-height: 110px;">📋 Customer Service Support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section-block">
+    <span class="badge">📬 Contact Us</span>
+    <h2 class="section-title">Contact Us | Hebei Solan Technology Co., Ltd</h2>
+    <div class="contact-grid">
+      <div>
+        <p><strong>Company Information</strong></p>
+        <p>🏢 Hebei Solan Technology Co., Ltd</p>
+        <p>🏷️ Brand: Solanactive</p>
+        <p>📌 Business Scope: Sports protective gear, fitness accessories, outdoor cycling supplies, functional active apparel, reflective safety workwear wholesale, OEM customization, Amazon FBA supply, DDP one-stop delivery service</p>
+        <p>📍 Address: E4-0790, 4th Floor, Zone E, Tatan International Trade City, 118 Shengli South Street, Qiaoxi District, Shijiazhuang City, Hebei Province, China</p>
+        <p>✉️ Email: shelly910423@gmail.com</p>
+        <p>📱 WhatsApp / Mobile: 0086 15027442014</p>
+        <p>🕒 Working Time: Monday-Saturday 08:30-18:00 (GMT+8)</p>
+        <div style="margin-top: 2rem; background: #f6f8fa; border-radius: 20px; padding: 1.2rem 1.5rem; border: 1px solid #e4e9ef; transition: all 0.3s ease;">
+          <p style="font-weight: 600;">📋 Contact Inquiry</p>
+          <p style="font-size: 0.95rem;">Please fill in the website form with your product demand, quantity, customization requirements and target market. Our professional sales team will reply with detailed quotation, product catalog and solution within 24 hours.</p>
         </div>
+      </div>
+      <div>
+        <div style="background: #f6f8fa; padding: 28px 24px; border-radius: 28px; border: 1px solid #e4e9ef; transition: all 0.3s ease;">
+          <h4 style="margin-bottom: 1.2rem;">Send Us Inquiry</h4>
+          <div class="form-group"><input type="text" placeholder="Your Name / Company"></div>
+          <div class="form-group"><input type="email" placeholder="Email *"></div>
+          <div class="form-group"><input type="text" placeholder="Product demand, target quantity"></div>
+          <div class="form-group"><textarea rows="3" placeholder="Custom requirements, target market..."></textarea></div>
+          <button class="btn-primary">Get Quote & Catalog →</button>
+          <p style="font-size: 0.8rem; margin-top: 0.8rem; color: #4f5f6d;">We will reply within 24 hours.</p>
+        </div>
+        <div class="img-placeholder img-bg-4" style="min-height: 100px; margin-top: 16px; border-radius: 20px;">🌐 Global Trade · Logistics Map</div>
+      </div>
+    </div>
+  </section>
 
-        <!-- ===== 页面内容 ===== -->
-        <div class="page-content">
+</main>
 
-            <!-- ========================================================= -->
-            <!-- 1. 软件  -->
-            <!-- ========================================================= -->
-            <section class="page-section active" id="section-software">
-                <div class="software-grid">
+<footer>
+  <div class="container">
+    <p>© 2026 Hebei Solan Technology Co., Ltd — SolanActive.com  |  Sports Protective Gear · Activewear · Outdoor Cycling · Amazon Supply</p>
+  </div>
+</footer>
 
-                    <!-- Options+ -->
-                    <section class="software-card options-plus">
-                        <div class="card-header">
-                            <h2>Logi Options+</h2>
-                            <span class="card-badge">新一代 · 办公创造</span>
-                        </div>
-                        <div class="card-tagline">⚡ 成就非凡 · 自定义您的设备</div>
-                        <div class="feature-grid">
-                            <div class="feature-item">
-                                <span class="feature-icon">🖱️</span>
-                                <h3>自定义设备</h3>
-                                <p>配置鼠标按钮、键盘按键、触摸板，调节灯光与网络摄像头，保持出色状态。</p>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">🌀</span>
-                                <h3>Flow 多设备控制</h3>
-                                <p>在电脑间顺畅传输文本、图像和文件。<span class="highlight">甚至 Windows 与 macOS 之间</span>。</p>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">📁</span>
-                                <h3>应用专属配置</h3>
-                                <p>为 Chrome、Edge、Zoom、Office、Adobe 等常用应用预设或自定义操作。</p>
-                            </div>
-                        </div>
-                        <div class="divider-light"></div>
-                        <div class="feature-grid" style="margin-top:0;">
-                            <div class="feature-item">
-                                <span class="feature-icon">✨</span>
-                                <h3>全新界面</h3>
-                                <p>升级后的 Logi Options+ 直观易用，让办公更智能。</p>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">🔗</span>
-                                <h3>跨系统流畅</h3>
-                                <p>在 Windows 和 macOS 之间使用 Flow，无缝协作。</p>
-                            </div>
-                        </div>
-                        <div class="card-footer-note">⚙️ 支持鼠标 · 键盘 · 指示灯 · 网络摄像头 · 触控板</div>
-                    </section>
+<script>
+  (function() {
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
 
-                    <!-- G HUB -->
-                    <section class="software-card ghub">
-                        <div class="card-header">
-                            <h2>罗技 G HUB</h2>
-                            <span class="card-badge">游戏 · 直播 · 装备</span>
-                        </div>
-                        <div class="card-tagline" style="border-left-color:#6c5ce7;">🎮 全面掌控 · 制胜配置</div>
-                        <div class="feature-grid">
-                            <div class="feature-item">
-                                <span class="feature-icon">🎯</span>
-                                <h3>配置 · 分享 · 共赢</h3>
-                                <p>下载职业选手与主播的配置文件，体验鼠标、按键绑定和宏。</p>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">📡</span>
-                                <h3>掌控直播</h3>
-                                <p>为按键编程，创建宏启动媒体、切换场景，<span class="highlight">支持 OBS Studio</span>。</p>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">🌈</span>
-                                <h3>LIGHTSYNC 灯光</h3>
-                                <p>动画效果、社区灯光配置，为键盘、鼠标、耳机、音箱赋予色彩。</p>
-                            </div>
-                        </div>
-                        <div class="divider-light"></div>
-                        <div class="feature-grid" style="margin-top:0;">
-                            <div class="feature-item">
-                                <span class="feature-icon">⌨️</span>
-                                <h3>全装备支持</h3>
-                                <p>鼠标、键盘、耳机（含麦克风）、音箱、网络摄像头。</p>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">⚡</span>
-                                <h3>即时调整</h3>
-                                <p>游戏内实时调参，无需退出，保持专注。</p>
-                            </div>
-                        </div>
-                        <div class="card-footer-note" style="background:#f5f2ff;border-color:#d9d0f0;">🎧 为游戏与直播打造 · 社区驱动</div>
-                    </section>
+    const sections = document.querySelectorAll('.section-block');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+    sections.forEach(section => observer.observe(section));
 
-                </div>
-            </section>
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const offset = 80;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+          }
+        }
+      });
+    });
 
-            <!-- ========================================================= -->
-            <!-- 2. 成功案例 -->
-            <!-- ========================================================= -->
-            <section class="page-section" id="section-cases">
-                <div style="margin-bottom:2rem;">
-                    <h2 style="font-size:2rem;font-weight:550;color:#0b1e33;letter-spacing:-0.02em;">✨ 成功案例</h2>
-                    <p style="color:#4b5a6e;font-size:1.05rem;">来自全球团队与创作者的真实故事</p>
-                </div>
-                <div class="case-grid">
-                    <div class="case-item">
-                        <span class="emoji-big">🏢</span>
-                        <h3>远程协作升级</h3>
-                        <p class="case-desc">某跨国设计团队使用 Logi Options+ 的 Flow 功能，在 Windows 和 Mac 之间无缝拖拽文件，协作效率提升 40%。</p>
-                        <span class="case-tag">办公 · 跨平台</span>
-                    </div>
-                    <div class="case-item">
-                        <span class="emoji-big">🎮</span>
-                        <h3>职业战队训练</h3>
-                        <p class="case-desc">顶级电竞战队使用 G HUB 定制宏与灯光同步，比赛响应速度提升，团队配合更加默契。</p>
-                        <span class="case-tag">游戏 · 竞技</span>
-                    </div>
-                    <div class="case-item">
-                        <span class="emoji-big">📹</span>
-                        <h3>直播达人首选</h3>
-                        <p class="case-desc">知名主播借助 G HUB 一键切换 OBS 场景、调节音频，直播流程更顺畅，观众互动更及时。</p>
-                        <span class="case-tag">直播 · 创作</span>
-                    </div>
-                    <div class="case-item">
-                        <span class="emoji-big">🧑‍💻</span>
-                        <h3>开发者效率工具</h3>
-                        <p class="case-desc">工程师将常用代码片段绑定到鼠标侧键，配合 Options+ 应用配置，编码效率显著提高。</p>
-                        <span class="case-tag">开发 · 效率</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ========================================================= -->
-            <!-- 3. 产品 -->
-            <!-- ========================================================= -->
-            <section class="page-section" id="section-products">
-                <div style="margin-bottom:2rem;">
-                    <h2 style="font-size:2rem;font-weight:550;color:#0b1e33;letter-spacing:-0.02em;">🛒 产品内容</h2>
-                    <p style="color:#4b5a6e;font-size:1.05rem;">软件所支持的硬件生态，为不同场景量身打造</p>
-                </div>
-                <div class="product-grid">
-                    <div class="product-item">
-                        <span class="prod-icon">🖱️</span>
-                        <h4>MX 系列鼠标</h4>
-                        <p>旗舰办公鼠标，支持 Flow 与多设备切换</p>
-                    </div>
-                    <div class="product-item">
-                        <span class="prod-icon">⌨️</span>
-                        <h4>MX 机械键盘</h4>
-                        <p>舒适敲击，智能背光，多设备连接</p>
-                    </div>
-                    <div class="product-item">
-                        <span class="prod-icon">🎧</span>
-                        <h4>G 系列耳机</h4>
-                        <p>7.1 环绕声，降噪麦克风，RGB 灯效</p>
-                    </div>
-                    <div class="product-item">
-                        <span class="prod-icon">📷</span>
-                        <h4>网络摄像头</h4>
-                        <p>4K 超清，自动对焦，内置降噪麦克风</p>
-                    </div>
-                    <div class="product-item">
-                        <span class="prod-icon">🎮</span>
-                        <h4>G 系列鼠标</h4>
-                        <p>高精度传感器，可调重量，RGB 同步</p>
-                    </div>
-                    <div class="product-item">
-                        <span class="prod-icon">🔊</span>
-                        <h4>音箱 & 麦克风</h4>
-                        <p>沉浸音质，专业拾音，LIGHTSYNC 联动</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ========================================================= -->
-            <!-- 4. 联系我们 -->
-            <!-- ========================================================= -->
-            <section class="page-section" id="section-contact">
-                <div style="margin-bottom:2rem;">
-                    <h2 style="font-size:2rem;font-weight:550;color:#0b1e33;letter-spacing:-0.02em;">📬 联系我们</h2>
-                    <p style="color:#4b5a6e;font-size:1.05rem;">有任何问题或合作意向？欢迎与我们取得联系</p>
-                </div>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <span class="c-icon">💬</span>
-                        <h4>在线客服</h4>
-                        <p>工作日 9:00 – 18:00</p>
-                        <a href="#" class="c-link">点击咨询 →</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="c-icon">📧</span>
-                        <h4>邮件支持</h4>
-                        <p>support@logitech-software.com</p>
-                        <a href="mailto:support@logitech-software.com" class="c-link">发送邮件 →</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="c-icon">📞</span>
-                        <h4>电话热线</h4>
-                        <p>400-800-8888</p>
-                        <span style="font-size:0.8rem;color:#8a9aa8;">服务时间 9:00–21:00</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="c-icon">🌐</span>
-                        <h4>官方社区</h4>
-                        <p>与全球用户交流经验</p>
-                        <a href="#" class="c-link">访问社区 →</a>
-                    </div>
-                </div>
-            </section>
-
-        </div><!-- /page-content -->
-
-        <!-- ===== 页脚 ===== -->
-        <footer class="site-footer">
-            <span>© 2026 罗技 · 软件生态 · 为办公、创作与游戏而生</span>
-        </footer>
-
-    </div><!-- /wrapper -->
-
-    <!-- ========================================================= -->
-    <!-- JavaScript: 菜单切换 -->
-    <!-- ========================================================= -->
-    <script>
-        (function() {
-            const navLinks = document.querySelectorAll('#mainNav a');
-            const sections = {
-                software: document.getElementById('section-software'),
-                cases: document.getElementById('section-cases'),
-                products: document.getElementById('section-products'),
-                contact: document.getElementById('section-contact')
-            };
-
-            function switchSection(sectionId) {
-                // 隐藏所有 section
-                Object.values(sections).forEach(sec => sec.classList.remove('active'));
-
-                // 显示目标 section
-                const target = sections[sectionId];
-                if (target) target.classList.add('active');
-
-                // 更新导航高亮
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.dataset.section === sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-
-                // 滚动到顶部（可选）
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-
-            // 点击导航切换
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const sectionId = this.dataset.section;
-                    if (sectionId) switchSection(sectionId);
-                });
-            });
-
-            // 默认激活 software（确保状态一致）
-            // 如果当前 URL 有 hash，则按 hash 切换，否则保持 software
-            const hash = window.location.hash.replace('#', '');
-            if (hash && sections[hash]) {
-                switchSection(hash);
-            } else {
-                // 默认 software 已经是 active，但确保导航高亮正确
-                // 但如果用户刷新页面，active 类可能丢失，重新设置
-                const activeSection = document.querySelector('.page-section.active');
-                if (activeSection) {
-                    const id = activeSection.id.replace('section-', '');
-                    navLinks.forEach(link => {
-                        link.classList.toggle('active', link.dataset.section === id);
-                    });
-                } else {
-                    // 如果没有任何 active，默认激活 software
-                    switchSection('software');
-                }
-            }
-        })();
-    </script>
-
+    setTimeout(() => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          section.classList.add('visible');
+        }
+      });
+    }, 100);
+  })();
+</script>
 </body>
 </html>
