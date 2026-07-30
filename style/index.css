@@ -168,12 +168,17 @@ body {
   color: #c4452b;
 }
 
-section[id] {
-  scroll-margin-top: 80px;
+.nav-links a.is-active {
+  color: #c4452b;
 }
 
-/* ===== 内容块 ===== */
+.nav-links a.is-active::after {
+  width: 100%;
+}
+
+/* ===== 单页模块：默认隐藏，仅当前模块显示 ===== */
 .section-block {
+  display: none;
   background: white;
   border-radius: 32px;
   padding: 48px 40px;
@@ -181,11 +186,12 @@ section[id] {
   border: 1px solid #eef1f5;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(16px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.section-block.visible {
+.section-block.is-active {
+  display: block;
   opacity: 1;
   transform: translateY(0);
 }
