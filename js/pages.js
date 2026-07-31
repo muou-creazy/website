@@ -3,9 +3,9 @@
  */
 (function () {
   /** 允许切换的模块 id 列表 */
-  var PAGE_IDS = ['about', 'products', 'services', 'faq', 'contact']
+  var PAGE_IDS = ['home', 'about', 'products', 'services', 'faq', 'contact']
   /** 默认首页模块 */
-  var DEFAULT_PAGE = 'about'
+  var DEFAULT_PAGE = 'home'
 
   /**
    * 从地址栏 hash 解析目标模块 id
@@ -45,7 +45,7 @@
    * 绑定导航与 hash 变化，实现模块切换
    */
   function bindPageRouter() {
-    document.querySelectorAll('.nav-links a, .logo-wrapper').forEach(function (link) {
+    document.querySelectorAll('.nav-links a, .logo-wrapper, .js-page-link').forEach(function (link) {
       link.addEventListener('click', function (e) {
         var targetId = (this.getAttribute('href') || '').replace(/^#/, '')
         if (!targetId || PAGE_IDS.indexOf(targetId) === -1) {
