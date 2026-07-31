@@ -10,6 +10,14 @@ body {
   color: #1a1a1a;
   line-height: 1.5;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 主内容区撑满剩余视口，避免短页面时页脚上浮 */
+main {
+  flex: 1 0 auto;
 }
 
 ::-webkit-scrollbar {
@@ -100,7 +108,7 @@ body {
   flex-shrink: 0;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 1.5px solid rgba(11, 43, 61, 0.08);
-  background: #0b0b0b;
+  /* background: #0b0b0b; */
 }
 
 .logo-image:hover {
@@ -189,12 +197,18 @@ body {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.35s ease, transform 0.35s ease;
+  margin-top: 20px;
 }
 
 .section-block.is-active {
   display: block;
   opacity: 1;
   transform: translateY(0);
+}
+
+/* 非首页模块至少撑满一屏内容区，页脚贴近视口底部 */
+.container > .section-block.is-active {
+  min-height: calc(100vh - 230px);
 }
 
 /* ===== Home 首屏 Banner（全宽，非卡片） ===== */
@@ -695,12 +709,14 @@ body {
 }
 
 footer {
-  margin-top: 2rem;
+  flex-shrink: 0;
+  margin-top: auto;
   padding: 2rem 0;
   border-top: 1px solid #e0e5eb;
   text-align: center;
   color: #4f5f6d;
   font-size: 0.9rem;
+  background: #f7f9fc;
 }
 
 @media (max-width: 880px) {
@@ -721,6 +737,14 @@ footer {
 
   .section-block {
     padding: 32px 20px;
+  }
+
+  .container > .section-block.is-active {
+    min-height: calc(100vh - 140px);
+  }
+
+  .product-card .card-media {
+    height: 200px;
   }
 
   .section-title {
@@ -830,15 +854,71 @@ footer {
   max-height: 520px;
 }
 
+/* About 图廊：左证书（高满宽自适应）+ 右评价（宽满高自适应） */
 .about-gallery {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 20px;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 24px;
   margin-top: 1.8rem;
+  align-items: center;
 }
 
-.about-gallery .media-frame img {
-  height: 260px;
+.about-gallery__item {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.about-gallery__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #eef2f6;
+}
+
+/* 覆盖 .media-frame img 的 cover 裁切，保留完整画面 */
+.about-gallery__item .about-gallery__media img {
+  display: block;
+  max-width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.about-gallery__item:hover .about-gallery__media img {
+  transform: scale(1.03);
+}
+
+/* 证书：高度占满展示区，宽度按比例自适应 */
+.about-gallery__item--certificates {
+  width: fit-content;
+  max-width: 100%;
+  justify-self: center;
+}
+
+.about-gallery__item--certificates .about-gallery__media {
+  height: 420px;
+}
+
+.about-gallery .about-gallery__item--certificates .about-gallery__media img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* 评价：宽度占满，高度按比例自适应 */
+.about-gallery__item--reviews .about-gallery__media {
+  align-items: stretch;
+}
+
+.about-gallery .about-gallery__item--reviews .about-gallery__media img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.product-grid {
+  gap: 28px 24px;
 }
 
 .product-card {
@@ -848,9 +928,10 @@ footer {
   flex-direction: column;
 }
 
+/* 产品图区：恢复可见高度，拉高页面主体 */
 .product-card .card-media {
   overflow: hidden;
-  height: 190px;
+  height: 240px;
   background: #e8eef3;
 }
 
@@ -873,18 +954,19 @@ footer {
 }
 
 .product-card h4 {
-  margin-top: 14px;
+  margin-top: 16px;
+  margin-bottom: 6px;
 }
 
 .product-card p {
-  padding-bottom: 18px;
+  padding-bottom: 20px;
   flex: 1;
 }
 
 .product-note {
-  margin-top: 1.5rem;
+  margin-top: 2.2rem;
   background: #eef2f6;
-  padding: 0.6rem 1.8rem;
+  padding: 0.75rem 1.8rem;
   border-radius: 60px;
   display: inline-block;
   font-weight: 500;
@@ -912,7 +994,7 @@ footer {
 }
 
 .service-feature__media {
-  height: 180px;
+  height: 300px;
   overflow: hidden;
   background: #e8eef3;
 }
@@ -1023,9 +1105,32 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .media-frame--tall img,
-  .about-gallery .media-frame img {
+  .media-frame--tall img {
     height: 220px;
+  }
+
+  .about-gallery__item--certificates {
+    width: 100%;
+  }
+
+  /* 移动端单列：证书限制最大高度并居中，评价仍宽满高自适应 */
+  .about-gallery__item--certificates .about-gallery__media {
+    min-height: 0;
+    height: auto;
+    max-height: 360px;
+  }
+
+  .about-gallery .about-gallery__item--certificates .about-gallery__media img {
+    height: auto;
+    max-height: 360px;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .about-gallery .about-gallery__item--reviews .about-gallery__media img {
+    width: 100%;
+    height: auto;
   }
 
   .media-frame--faq {
