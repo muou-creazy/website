@@ -194,8 +194,8 @@
       '  <p class="solan-inapp-guide__desc">' + copy.tipZh + '</p>',
       '  <p class="solan-inapp-guide__desc solan-inapp-guide__desc--en">' + copy.tipEn + '</p>',
       '  <div class="solan-inapp-guide__actions">',
-      '    <button type="button" class="solan-inapp-guide__btn solan-inapp-guide__btn--primary" data-action="copy">' + copy.copy + '</button>',
-      '    <button type="button" class="solan-inapp-guide__btn" data-action="open">' + copy.open + '</button>',
+      // '    <button type="button" class="solan-inapp-guide__btn solan-inapp-guide__btn--primary" data-action="copy">' + copy.copy + '</button>',
+      // '    <button type="button" class="solan-inapp-guide__btn" data-action="open">' + copy.open + '</button>',
       '    <button type="button" class="solan-inapp-guide__btn solan-inapp-guide__btn--ghost" data-action="close">' + copy.close + '</button>',
       '  </div>',
       '</div>'
