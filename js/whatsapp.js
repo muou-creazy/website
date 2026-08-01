@@ -143,7 +143,37 @@
   }
 
   /**
-   * 展示内置浏览器引导层：请用系统浏览器打开
+   * 获取引导层中英双语文案
+   * @param {string} channel 渠道名
+   * @returns {{ title: string, tipZh: string, tipEn: string, copy: string, open: string, close: string, copied: string, prompt: string }}
+   */
+  function getGuideCopy(channel) {
+    var channelLabel = channel === 'facebook'
+      ? 'Messenger'
+      : (channel === 'linkedin' ? 'LinkedIn' : 'WhatsApp')
+
+    var tipZh = isWeChat()
+      ? '当前在微信内打开，无法直接唤起 ' + channelLabel + '。请点击右上角 ···，选择“在浏览器中打开”，再点击联系按钮。'
+      : '当前在 App 内置浏览器中打开，可能无法直接唤起 ' + channelLabel + '。请用系统浏览器（Safari / Chrome）打开本站后再试。'
+
+    var tipEn = isWeChat()
+      ? 'Opened in WeChat. ' + channelLabel + ' cannot be launched directly. Tap ··· at the top right, choose “Open in Browser”, then try the contact button again.'
+      : 'Opened in an in-app browser. ' + channelLabel + ' may be blocked. Please open this site in Safari / Chrome, then try again.'
+
+    return {
+      title: '无法直接打开 ' + channelLabel + ' / Unable to open ' + channelLabel,
+      tipZh: tipZh,
+      tipEn: tipEn,
+      copy: '复制聊天链接 / Copy chat link',
+      open: '仍要尝试打开 / Try opening anyway',
+      close: '关闭 / Close',
+      copied: '已复制 / Copied',
+      prompt: '请手动复制链接 / Please copy the link manually:'
+    }
+  }
+
+  /**
+   * 展示内置浏览器引导层：请用系统浏览器打开（中英双语）
    * @param {string} url 可复制的目标链接
    * @param {string} channel 渠道名
    */
@@ -153,25 +183,20 @@
       existing.parentNode.removeChild(existing)
     }
 
-    var channelLabel = channel === 'facebook'
-      ? 'Messenger'
-      : (channel === 'linkedin' ? 'LinkedIn' : 'WhatsApp')
-
-    var tip = isWeChat()
-      ? '当前在微信内打开，无法直接唤起 ' + channelLabel + '。请点击右上角 ···，选择“在浏览器中打开”，再点击联系按钮。'
-      : '当前在 App 内置浏览器中打开，可能无法直接唤起 ' + channelLabel + '。请用系统浏览器（Safari / Chrome）打开本站后再试。'
+    var copy = getGuideCopy(channel)
 
     var mask = document.createElement('div')
     mask.id = 'solan-inapp-guide'
     mask.className = 'solan-inapp-guide'
     mask.innerHTML = [
       '<div class="solan-inapp-guide__panel" role="dialog" aria-modal="true" aria-labelledby="solan-inapp-guide-title">',
-      '  <p class="solan-inapp-guide__title" id="solan-inapp-guide-title">无法直接打开 ' + channelLabel + '</p>',
-      '  <p class="solan-inapp-guide__desc">' + tip + '</p>',
+      '  <p class="solan-inapp-guide__title" id="solan-inapp-guide-title">' + copy.title + '</p>',
+      '  <p class="solan-inapp-guide__desc">' + copy.tipZh + '</p>',
+      '  <p class="solan-inapp-guide__desc solan-inapp-guide__desc--en">' + copy.tipEn + '</p>',
       '  <div class="solan-inapp-guide__actions">',
-      '    <button type="button" class="solan-inapp-guide__btn solan-inapp-guide__btn--primary" data-action="copy">复制聊天链接</button>',
-      '    <button type="button" class="solan-inapp-guide__btn" data-action="open">仍要尝试打开</button>',
-      '    <button type="button" class="solan-inapp-guide__btn solan-inapp-guide__btn--ghost" data-action="close">关闭</button>',
+      '    <button type="button" class="solan-inapp-guide__btn solan-inapp-guide__btn--primary" data-action="copy">' + copy.copy + '</button>',
+      '    <button type="button" class="solan-inapp-guide__btn" data-action="open">' + copy.open + '</button>',
+      '    <button type="button" class="solan-inapp-guide__btn solan-inapp-guide__btn--ghost" data-action="close">' + copy.close + '</button>',
       '  </div>',
       '</div>'
     ].join('')
@@ -201,12 +226,12 @@
       if (action === 'copy') {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(url).then(function () {
-            actionEl.textContent = '已复制'
+            actionEl.textContent = copy.copied
           }).catch(function () {
-            window.prompt('请手动复制链接：', url)
+            window.prompt(copy.prompt, url)
           })
         } else {
-          window.prompt('请手动复制链接：', url)
+          window.prompt(copy.prompt, url)
         }
         return
       }
