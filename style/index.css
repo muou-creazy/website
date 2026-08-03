@@ -316,7 +316,7 @@ main {
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.02em;
-  max-width: 18ch;
+  max-width: 22ch;
   margin-bottom: 1rem;
   color: #f7fafc;
   animation: home-rise 0.75s ease 0.08s both;
@@ -767,12 +767,12 @@ footer a:hover {
 
 .footer-links a {
   color: #c5ccd3;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
 }
 
 .footer-links a:hover {
   color: #e06a52;
+  text-decoration: none;
 }
 
 .footer-links__sep {
@@ -1091,7 +1091,7 @@ footer a:hover {
 /* 产品图区：恢复可见高度，拉高页面主体 */
 .product-card .card-media {
   overflow: hidden;
-  height: 240px;
+  height: 360px;
   background: #e8eef3;
 }
 
