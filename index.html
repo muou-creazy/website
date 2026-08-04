@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solan 外贸独立站 | 运动户外供应链整合</title>
+  <title data-i18n="meta.title">Solan 外贸独立站 | 运动户外供应链整合</title>
   <!-- 浏览器标签页图标 -->
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
   <!-- SEO 关键词：sports protective gear, activewear, outdoor cycling, Amazon supply -->
-  <meta name="description" content="Solan - 专业运动护具、健身配件、户外骑行、功能服装供应链整合，12年外贸经验，支持OEM/ODM、DDP、亚马逊FBA供货。">
+  <meta name="description" content="Solan - 专业运动护具、健身配件、户外骑行、功能服装供应链整合，12年外贸经验，支持OEM/ODM、DDP、亚马逊FBA供货。" data-i18n-content="meta.description">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet"> -->
@@ -33,17 +33,31 @@
       </div>
     </div>
   </div>
-  <!-- 导航行：菜单居中 -->
+  <!-- 导航行：菜单居中，右侧语言切换 -->
   <nav class="navbar">
     <div class="container">
       <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#services">Services</a>
+        <a href="#home" data-i18n="nav.home">Home</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#products" data-i18n="nav.products">Products</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
         <!-- FAQ 导航暂时隐藏，页面内容保留便于后期启用 -->
-        <a href="#faq" class="nav-link--dormant" hidden>FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="#faq" class="nav-link--dormant" hidden data-i18n="nav.faq">FAQ</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </div>
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-switcher__btn" id="lang-switcher-btn" aria-haspopup="listbox" aria-expanded="false" data-i18n-aria="lang.aria">
+          <span class="lang-switcher__current" id="lang-switcher-current">EN</span>
+          <span class="lang-switcher__chevron" aria-hidden="true"></span>
+        </button>
+        <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" hidden>
+          <li role="option" tabindex="0" data-lang="en" aria-selected="true">English</li>
+          <li role="option" tabindex="0" data-lang="zh" aria-selected="false">中文</li>
+          <li role="option" tabindex="0" data-lang="ko" aria-selected="false">한국어</li>
+          <li role="option" tabindex="0" data-lang="ja" aria-selected="false">日本語</li>
+          <li role="option" tabindex="0" data-lang="fr" aria-selected="false">Français</li>
+          <li role="option" tabindex="0" data-lang="de" aria-selected="false">Deutsch</li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -57,12 +71,12 @@
       <div class="home-hero__content">
         <p class="home-hero__brand">Solan</p>
         <!-- <h1 class="home-hero__title">Trusted One-Stop Supplier For Sports &amp; Outdoor Products</h1> -->
-        <h1 class="home-hero__title">Trusted One-Stop Supplier <br/>Sports & Outdoor Products</h1>
-        <p class="home-hero__subtitle">Sports protective gear | Riding &amp; Outdoor | Functional apparel | Fitness accessories</p>
-        <p class="home-hero__tags">OEM &amp; ODM Customization｜Amazon FBA Supply｜DDP Door‑to‑Door Service</p>
+        <h1 class="home-hero__title" data-i18n="home.title" data-i18n-html>Trusted One-Stop Supplier <br/>Sports & Outdoor Products</h1>
+        <p class="home-hero__subtitle" data-i18n="home.subtitle">Sports protective gear | Riding &amp; Outdoor | Functional apparel | Fitness accessories</p>
+        <p class="home-hero__tags" data-i18n="home.tags">OEM &amp; ODM Customization｜Amazon FBA Supply｜DDP Door‑to‑Door Service</p>
         <div class="home-hero__actions">
-          <a href="#products" class="btn-primary js-page-link">View Products →</a>
-          <a href="#contact" class="btn-secondary js-page-link">Get A Quotation</a>
+          <a href="#products" class="btn-primary js-page-link" data-i18n="home.ctaProducts">View Products →</a>
+          <a href="#contact" class="btn-secondary js-page-link" data-i18n="home.ctaQuote">Get A Quotation</a>
         </div>
       </div>
     </div>
@@ -72,127 +86,127 @@
 
   <!-- ===== ABOUT ===== -->
   <section id="about" class="section-block">
-    <span class="badge">12+ years foreign trade</span>
-    <h2 class="section-title">About Us | Hebei Solan Technology Co., Ltd</h2>
+    <span class="badge" data-i18n="about.badge">12+ years foreign trade</span>
+    <h2 class="section-title" data-i18n="about.title">About Us | Hebei Solan Technology Co., Ltd</h2>
 
     <!-- 工厂图：顶部横向铺满，仅保留图片 -->
     <figure class="about-hero-media">
-      <img src="./img/about-factory.png" alt="Solan factory production workshop" width="1000" height="524" loading="lazy">
+      <img src="./img/about-factory.png" alt="Solan factory production workshop" width="1000" height="524" loading="lazy" data-i18n-alt="about.altFactory">
     </figure>
 
     <!-- 图片下方文案 -->
     <div class="about-copy">
-      <h3 class="about-copy__title">Who We Are</h3>
-      <p>Hebei Solan Technology Co., Ltd. is a professional sports goods supply chain supplier. With 12 years of mature import and export experience, we adopt a self-operated factory + certified cooperative factory dual supply model, focusing on sports protective gear, fitness accessories, outdoor cycling items and functional active apparel.</p>
+      <h3 class="about-copy__title" data-i18n="about.whoTitle">Who We Are</h3>
+      <p data-i18n="about.whoBody">Hebei Solan Technology Co., Ltd. is a professional sports goods supply chain supplier. With 12 years of mature import and export experience, we adopt a self-operated factory + certified cooperative factory dual supply model, focusing on sports protective gear, fitness accessories, outdoor cycling items and functional active apparel.</p>
 
-      <h3 class="about-copy__title about-copy__title--spaced">Why choose us</h3>
-      <p>Solan provide one stop sourcing to help solve the pain points of scattered suppliers, inconsistent quality and high communication costs for overseas buyers.</p>
-      <p class="mt-1">Meanwhile deeply experienced in Amazon supply, OEM/ODM customization and DDP door-to-door delivery, providing full-link professional foreign trade solutions for global customers.</p>
+      <h3 class="about-copy__title about-copy__title--spaced" data-i18n="about.whyTitle">Why choose us</h3>
+      <p data-i18n="about.whyBody1">Solan provide one stop sourcing to help solve the pain points of scattered suppliers, inconsistent quality and high communication costs for overseas buyers.</p>
+      <p class="mt-1" data-i18n="about.whyBody2">Meanwhile deeply experienced in Amazon supply, OEM/ODM customization and DDP door-to-door delivery, providing full-link professional foreign trade solutions for global customers.</p>
     </div>
 
     <div class="about-gallery">
       <!-- 证书图：近方形 2016×2048，高度占满、宽度按比例自适应 -->
       <figure class="media-frame about-gallery__item about-gallery__item--certificates">
         <div class="about-gallery__media">
-          <img src="./img/about-certificates.png" alt="Company certificates and qualifications" width="2016" height="2048" loading="lazy">
+          <img src="./img/about-certificates.png" alt="Company certificates and qualifications" width="2016" height="2048" loading="lazy" data-i18n-alt="about.altCertificates">
         </div>
-        <figcaption>Certificates &amp; Qualifications</figcaption>
+        <figcaption data-i18n="about.certificates">Certificates &amp; Qualifications</figcaption>
       </figure>
       <!-- 评价图：横图 1424×800，宽度占满、高度按比例自适应 -->
       <figure class="media-frame about-gallery__item about-gallery__item--reviews">
         <div class="about-gallery__media">
-          <img src="./img/about-reviews.png" alt="Customer reviews and feedback" width="1424" height="800" loading="lazy">
+          <img src="./img/about-reviews.png" alt="Customer reviews and feedback" width="1424" height="800" loading="lazy" data-i18n-alt="about.altReviews">
         </div>
-        <figcaption>Verified Customer Reviews</figcaption>
+        <figcaption data-i18n="about.reviews">Verified Customer Reviews</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ===== PRODUCTS ===== -->
   <section id="products" class="section-block">
-    <span class="badge">Product Center</span>
-    <h2 class="section-title">Our Products | Solan Sports &amp; Outdoor Wholesale</h2>
+    <span class="badge" data-i18n="products.badge">Product Center</span>
+    <h2 class="section-title" data-i18n="products.title">Our Products | Solan Sports &amp; Outdoor Wholesale</h2>
     <div class="grid-3 product-grid">
       <article class="card product-card">
-        <div class="card-media"><img src="./img/product-protective-gear.png" alt="Sports protective gear" loading="lazy"></div>
-        <h4>Sports Protective Gear</h4>
+        <div class="card-media"><img src="./img/product-protective-gear.png" alt="Sports protective gear" loading="lazy" data-i18n-alt="products.altProtective"></div>
+        <h4 data-i18n="products.protective">Sports Protective Gear</h4>
       </article>
       <article class="card product-card">
-        <div class="card-media"><img src="./img/product-fitness-accessories.png" alt="Fitness and sports accessories" loading="lazy"></div>
-        <h4>Fitness &amp; Sports Accessories</h4>
+        <div class="card-media"><img src="./img/product-fitness-accessories.png" alt="Fitness and sports accessories" loading="lazy" data-i18n-alt="products.altFitness"></div>
+        <h4 data-i18n="products.fitness">Fitness &amp; Sports Accessories</h4>
       </article>
       <article class="card product-card">
-        <div class="card-media"><img src="./img/product-outdoor-cycling.png" alt="Outdoor and cycling series" loading="lazy"></div>
-        <h4>Outdoor &amp; Cycling Series</h4>
+        <div class="card-media"><img src="./img/product-outdoor-cycling.png" alt="Outdoor and cycling series" loading="lazy" data-i18n-alt="products.altOutdoor"></div>
+        <h4 data-i18n="products.outdoor">Outdoor &amp; Cycling Series</h4>
       </article>
       <article class="card product-card">
-        <div class="card-media"><img src="./img/product-active-apparel.png" alt="Functional apparel and reflective safety wear" loading="lazy"></div>
-        <h4>Functional Apparel &amp; Reflective Safety Wear</h4>
+        <div class="card-media"><img src="./img/product-active-apparel.png" alt="Functional apparel and reflective safety wear" loading="lazy" data-i18n-alt="products.altApparel"></div>
+        <h4 data-i18n="products.apparel">Functional Apparel &amp; Reflective Safety Wear</h4>
       </article>
       <article class="card product-card">
-        <div class="card-media"><img src="./img/product-mixed-procurement.png" alt="One-stop mixed procurement" loading="lazy"></div>
-        <h4>One-Stop Mixed Procurement</h4>
+        <div class="card-media"><img src="./img/product-mixed-procurement.png" alt="One-stop mixed procurement" loading="lazy" data-i18n-alt="products.altMixed"></div>
+        <h4 data-i18n="products.mixed">One-Stop Mixed Procurement</h4>
       </article>
     </div>
   </section>
 
   <!-- ===== SERVICES ===== -->
   <section id="services" class="section-block">
-    <span class="badge">Services</span>
-    <h2 class="section-title">Our Services | One-Stop Sports Supply Chain Solution</h2>
+    <span class="badge" data-i18n="services.badge">Services</span>
+    <h2 class="section-title" data-i18n="services.title">Our Services | One-Stop Sports Supply Chain Solution</h2>
 
     <div class="service-feature-grid">
       <article class="service-feature">
-        <div class="service-feature__media"><img src="./img/service-qc.png" alt="Quality inspection and QC" loading="lazy"></div>
+        <div class="service-feature__media"><img src="./img/service-qc.png" alt="Quality inspection and QC" loading="lazy" data-i18n-alt="services.altQc"></div>
         <div class="service-feature__body">
-          <h4>Strict Factory Selection &amp; Unified QC</h4>
-          <p>Qualified cooperative factories with export qualifications. Unified standards, fabric inspection, semi-finished supervision, finished sampling. Meet EU, US, Amazon standards.</p>
+          <h4 data-i18n="services.qcTitle">Strict Factory Selection &amp; Unified QC</h4>
+          <p data-i18n="services.qcBody">Qualified cooperative factories with export qualifications. Unified standards, fabric inspection, semi-finished supervision, finished sampling. Meet EU, US, Amazon standards.</p>
         </div>
       </article>
       <article class="service-feature">
-        <div class="service-feature__media"><img src="./img/service-oem.png" alt="OEM and ODM customization" loading="lazy"></div>
+        <div class="service-feature__media"><img src="./img/service-oem.png" alt="OEM and ODM customization" loading="lazy" data-i18n-alt="services.altOem"></div>
         <div class="service-feature__body">
-          <h4>OEM / ODM Customization</h4>
-          <p>Custom fabric, size, color, LOGO, silicone anti-slip, sublimation pattern, private label. Free proofing, fast sample, flexible MOQ.</p>
+          <h4 data-i18n="services.oemTitle">OEM / ODM Customization</h4>
+          <p data-i18n="services.oemBody">Custom fabric, size, color, LOGO, silicone anti-slip, sublimation pattern, private label. Free proofing, fast sample, flexible MOQ.</p>
         </div>
       </article>
       <article class="service-feature">
-        <div class="service-feature__media"><img src="./img/service-amazon-fba.png" alt="Amazon FBA specialized supply" loading="lazy"></div>
+        <div class="service-feature__media"><img src="./img/service-amazon-fba.png" alt="Amazon FBA specialized supply" loading="lazy" data-i18n-alt="services.altAmazon"></div>
         <div class="service-feature__body">
-          <h4>Amazon FBA Specialized Supply</h4>
-          <p>Years of experience serving Amazon sellers. Standard FBA packaging, label pasting, batch stocking to reduce platform risks.</p>
+          <h4 data-i18n="services.amazonTitle">Amazon FBA Specialized Supply</h4>
+          <p data-i18n="services.amazonBody">Years of experience serving Amazon sellers. Standard FBA packaging, label pasting, batch stocking to reduce platform risks.</p>
         </div>
       </article>
     </div>
 
     <div class="services-grid services-grid--extra">
-      <div class="service-card"><h4>DDP Door-to-Door Delivery</h4><p>Support DDP tax-included delivery for most European and American countries. Handle picking, customs, tariff, destination delivery.</p></div>
-      <div class="service-card"><h4>One-Stop Mixed Consolidation</h4><p>Mix protective gear, fitness, cycling, apparel, reflective wear in one container. One-time docking, one-time shipment, great cost saving.</p></div>
-      <div class="service-card"><h4>Professional Foreign Trade After-Sales</h4><p>12 years export team, 24-hour inquiry reply, order tracking, documentation, after-sales support.</p></div>
+      <div class="service-card"><h4 data-i18n="services.ddpTitle">DDP Door-to-Door Delivery</h4><p data-i18n="services.ddpBody">Support DDP tax-included delivery for most European and American countries. Handle picking, customs, tariff, destination delivery.</p></div>
+      <div class="service-card"><h4 data-i18n="services.mixTitle">One-Stop Mixed Consolidation</h4><p data-i18n="services.mixBody">Mix protective gear, fitness, cycling, apparel, reflective wear in one container. One-time docking, one-time shipment, great cost saving.</p></div>
+      <div class="service-card"><h4 data-i18n="services.afterTitle">Professional Foreign Trade After-Sales</h4><p data-i18n="services.afterBody">12 years export team, 24-hour inquiry reply, order tracking, documentation, after-sales support.</p></div>
     </div>
   </section>
 
   <!-- ===== FAQ（导航已隐藏，内容保留便于后期启用） ===== -->
   <section id="faq" class="section-block">
-    <span class="badge">FAQ</span>
-    <h2 class="section-title">FAQ | Wholesale &amp; Custom Inquiry Answers</h2>
-    <p class="section-sub">Here are the most frequently asked questions from our global wholesale and cross-border customers. Please feel free to contact us if you have other questions.</p>
+    <span class="badge" data-i18n="faq.badge">FAQ</span>
+    <h2 class="section-title" data-i18n="faq.title">FAQ | Wholesale &amp; Custom Inquiry Answers</h2>
+    <p class="section-sub" data-i18n="faq.sub">Here are the most frequently asked questions from our global wholesale and cross-border customers. Please feel free to contact us if you have other questions.</p>
 
     <div class="faq-grid">
       <div class="faq-list">
-        <div class="faq-item"><div class="faq-q">Q1: Are you a factory or a trading company?</div><div class="faq-a">A: Dual supply mode: self-owned factory for core products + cooperative factories for supporting categories. Uniform quality control for stable multi-category procurement.</div></div>
-        <div class="faq-item"><div class="faq-q">Q2: Can you support Amazon FBA supply and standard packaging?</div><div class="faq-a">A: Yes. Proficient in platform safety standards, FBA labeling, neutral packaging and batch stable delivery.</div></div>
-        <div class="faq-item"><div class="faq-q">Q3: Do you provide DDP door-to-door delivery service?</div><div class="faq-a">A: Yes, support DDP tax-included delivery for mainstream European and American countries.</div></div>
-        <div class="faq-item"><div class="faq-q">Q4: Can I mix different sports products in one container?</div><div class="faq-a">A: Absolutely. Mixed consolidation is our core advantage, saving procurement and logistics costs.</div></div>
-        <div class="faq-item"><div class="faq-q">Q5: Do you support OEM private label customization?</div><div class="faq-a">A: Yes. All core products support custom LOGO, pattern, fabric, size. Free design drafts and fast sample service.</div></div>
-        <div class="faq-item"><div class="faq-q">Q6: What is your MOQ?</div><div class="faq-a">A: Flexible MOQ for conventional sports protective gear and clothing. Small batch trial orders supported.</div></div>
-        <div class="faq-item"><div class="faq-q">Q7: How do you guarantee product quality?</div><div class="faq-a">A: Unified factory access standards, whole-process supervision, random sampling before shipment. Support third-party inspection.</div></div>
-        <div class="faq-item"><div class="faq-q">Q8: What are your payment and delivery terms?</div><div class="faq-a">A: T/T, Alibaba Trade Assurance, FOB port shipment, DDP door-to-door, stable delivery cycle.</div></div>
+        <div class="faq-item"><div class="faq-q" data-i18n="faq.q1">Q1: Are you a factory or a trading company?</div><div class="faq-a" data-i18n="faq.a1">A: Dual supply mode: self-owned factory for core products + cooperative factories for supporting categories. Uniform quality control for stable multi-category procurement.</div></div>
+        <div class="faq-item"><div class="faq-q" data-i18n="faq.q2">Q2: Can you support Amazon FBA supply and standard packaging?</div><div class="faq-a" data-i18n="faq.a2">A: Yes. Proficient in platform safety standards, FBA labeling, neutral packaging and batch stable delivery.</div></div>
+        <div class="faq-item"><div class="faq-q" data-i18n="faq.q3">Q3: Do you provide DDP door-to-door delivery service?</div><div class="faq-a" data-i18n="faq.a3">A: Yes, support DDP tax-included delivery for mainstream European and American countries.</div></div>
+        <div class="faq-item"><div class="faq-q" data-i18n="faq.q4">Q4: Can I mix different sports products in one container?</div><div class="faq-a" data-i18n="faq.a4">A: Absolutely. Mixed consolidation is our core advantage, saving procurement and logistics costs.</div></div>
+        <div class="faq-item"><div class="faq-q" data-i18n="faq.q5">Q5: Do you support OEM private label customization?</div><div class="faq-a" data-i18n="faq.a5">A: Yes. All core products support custom LOGO, pattern, fabric, size. Free design drafts and fast sample service.</div></div>
+        <div class="faq-item"><div class="faq-q" data-i18n="faq.q6">Q6: What is your MOQ?</div><div class="faq-a" data-i18n="faq.a6">A: Flexible MOQ for conventional sports protective gear and clothing. Small batch trial orders supported.</div></div>
+        <div class="faq-item"><div class="faq-q" data-i18n="faq.q7">Q7: How do you guarantee product quality?</div><div class="faq-a" data-i18n="faq.a7">A: Unified factory access standards, whole-process supervision, random sampling before shipment. Support third-party inspection.</div></div>
+        <div class="faq-item"><div class="faq-q" data-i18n="faq.q8">Q8: What are your payment and delivery terms?</div><div class="faq-a" data-i18n="faq.a8">A: T/T, Alibaba Trade Assurance, FOB port shipment, DDP door-to-door, stable delivery cycle.</div></div>
       </div>
       <aside class="faq-side">
         <figure class="media-frame media-frame--faq">
-          <img src="./img/faq-support.png" alt="Sales team and customer support" loading="lazy">
-          <figcaption>Professional sales &amp; after-sales support</figcaption>
+          <img src="./img/faq-support.png" alt="Sales team and customer support" loading="lazy" data-i18n-alt="faq.altSupport">
+          <figcaption data-i18n="faq.sideCaption">Professional sales &amp; after-sales support</figcaption>
         </figure>
       </aside>
     </div>
@@ -201,7 +215,7 @@
   <!-- ===== CONTACT（新版） ===== -->
   <section id="contact" class="section-block">
     <div class="contact-simple">
-      <h2 class="contact-simple__heading">Contact Us</h2>
+      <h2 class="contact-simple__heading" data-i18n="contact.heading">Contact Us</h2>
       <ul class="contact-simple__list">
         <li>
           <a class="contact-simple__item js-social-chat" href="https://web.whatsapp.com/send?phone=8615027442014" data-channel="whatsapp" data-account="8615027442014" data-text="Hello Solan, I would like to inquire about your products." rel="noopener noreferrer">
@@ -232,7 +246,7 @@
                 <path d="M12 7v5l3 2"/>
               </svg>
             </span>
-            <span>Mon–Fri 8:30 a.m. - 6:00 p.m. CST</span>
+            <span data-i18n="contact.hours">Mon–Fri 8:30 a.m. - 6:00 p.m. CST</span>
           </div>
         </li>
         <li>
@@ -243,7 +257,7 @@
                 <circle cx="12" cy="10" r="2.5"/>
               </svg>
             </span>
-            <span>HQ: E4-0790, Tatan International Trade City, Shijiazhuang, China</span>
+            <span data-i18n="contact.address">HQ: E4-0790, Tatan International Trade City, Shijiazhuang, China</span>
           </div>
         </li>
       </ul>
@@ -255,6 +269,7 @@
         href="https://uri.amap.com/marker?position=114.486989,38.001671&amp;name=%E5%A1%94%E5%9D%9B%E5%9B%BD%E9%99%85%E5%95%86%E8%B4%B8%E5%9F%8E4%E5%8F%B7%E5%86%99%E5%AD%97%E6%A5%BC&amp;src=solan&amp;callnative=1"
         target="_blank"
         rel="noopener noreferrer"
+        data-i18n-aria="contact.mapAria"
         aria-label="在高德地图中查看塔谈国际贸易城4号写字楼"
       >
         <img
@@ -264,8 +279,9 @@
           width="1589"
           height="820"
           loading="lazy"
+          data-i18n-alt="contact.mapAlt"
         >
-        <span class="contact-simple__map-tip">在高德地图中查看 →</span>
+        <span class="contact-simple__map-tip" data-i18n="contact.mapTip">在高德地图中查看 →</span>
       </a>
     </div>
 
@@ -456,13 +472,13 @@
 </main>
 
 <footer>
-  <div class="container">
+  <div class="container footer-bar">
     <!-- <p>© 2026 Hebei Solan Technology Co., Ltd — <a href="http://www.solanactive.com" target="_blank" rel="noopener noreferrer">solanactive.com</a>  |  Sports Protective Gear · Activewear · Outdoor Cycling · Amazon Supply</p> -->
-    <p>© 2026 Hebei Solan Technology Co., Ltd. <a href="http://www.solanactive.com" target="_blank" rel="noopener noreferrer">Solanactive.com</a>. All Rights Reserved.</p>
+    <p data-i18n="footer.copy" data-i18n-html>© 2026 Hebei Solan Technology Co., Ltd. <a href="http://www.solanactive.com" target="_blank" rel="noopener noreferrer">Solanactive.com</a>. All Rights Reserved.</p>
     <p class="footer-links">
-      <a href="#terms" class="js-page-link">Terms of Use</a>
+      <a href="#terms" class="js-page-link" data-i18n="footer.terms">Terms of Use</a>
       <span class="footer-links__sep" aria-hidden="true">·</span>
-      <a href="#privacy" class="js-page-link">Privacy Policy</a>
+      <a href="#privacy" class="js-page-link" data-i18n="footer.privacy">Privacy Policy</a>
     </p>
   </div>
 </footer>
@@ -523,6 +539,8 @@
   </a> -->
 </div>
 
+<script src="./js/translations.js"></script>
+<script src="./js/i18n.js"></script>
 <script src="./js/inquiry.js"></script>
 <script src="./js/pages.js"></script>
 <script src="./js/whatsapp.js"></script>
