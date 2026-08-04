@@ -1274,7 +1274,7 @@ footer a:hover {
 
 .contact-simple__item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   color: #1f3a4b;
   text-decoration: none;

@@ -233,12 +233,9 @@
   window.SolanI18n = {
     setLanguage: setLanguage,
     applyLanguage: applyLanguage,
-    getStoredLang: getStoredLang
+    getStoredLang: getStoredLang,
+    init: init
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init)
-  } else {
-    init()
-  }
+  // 等待 commonts 模块注入后再初始化（由 index 在 solan:ready 时调用）
 })()
